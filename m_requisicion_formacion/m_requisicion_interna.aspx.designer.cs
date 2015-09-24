@@ -22,22 +22,13 @@ namespace m_requisicion_formacion {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// Control ScriptManager1.
+        /// Control divDatosGenerales.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
-        
-        /// <summary>
-        /// Control UpdatePanel1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDatosGenerales;
         
         /// <summary>
         /// Control prioridad.
@@ -49,31 +40,22 @@ namespace m_requisicion_formacion {
         protected global::System.Web.UI.WebControls.DropDownList prioridad;
         
         /// <summary>
-        /// Control modalidad.
+        /// Control dropListModalidad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList modalidad;
+        protected global::System.Web.UI.WebControls.DropDownList dropListModalidad;
         
         /// <summary>
-        /// Control presencial.
+        /// Control divDatosPresencial.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl presencial;
-        
-        /// <summary>
-        /// Control pNumeroParticipantes.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox pNumeroParticipantes;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDatosPresencial;
         
         /// <summary>
         /// Control TextBox1.
@@ -94,58 +76,49 @@ namespace m_requisicion_formacion {
         protected global::System.Web.UI.WebControls.TextBox TextBox2;
         
         /// <summary>
-        /// Control dropLugar.
+        /// Control dropListLugar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dropLugar;
+        protected global::System.Web.UI.WebControls.DropDownList dropListLugar;
         
         /// <summary>
-        /// Control enLinea.
+        /// Control divEspecificarOficina.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl enLinea;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divEspecificarOficina;
         
         /// <summary>
-        /// Control divOficinaServicio.
+        /// Control divEspecificarSala.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divOficinaServicio;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divEspecificarSala;
         
         /// <summary>
-        /// Control divCorporativo.
+        /// Control dropListSala.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divCorporativo;
+        protected global::System.Web.UI.WebControls.DropDownList dropListSala;
         
         /// <summary>
-        /// Control dropSala.
+        /// Control divTipoAcomodo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dropSala;
-        
-        /// <summary>
-        /// Control divAuditorio.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divAuditorio;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divTipoAcomodo;
         
         /// <summary>
         /// Control dropAcomodo.

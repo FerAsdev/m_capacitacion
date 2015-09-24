@@ -11,17 +11,27 @@ namespace m_requisicion_formacion
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            presencial.Visible = false;
-            enLinea.Visible = false;
-            divOficinaServicio.Visible = false;
-            divCorporativo.Visible = false;
-            divAuditorio.Visible = false;
-            if (modalidad.SelectedValue == "1") { presencial.Visible = true;}
-            if (modalidad.SelectedValue == "2") { enLinea.Visible = true; }
-            if (dropLugar.SelectedValue == "1") { divOficinaServicio.Visible = true; }
-            if (dropLugar.SelectedValue == "2") { divCorporativo.Visible = true; }
-            if (dropSala.SelectedValue == "1") { divAuditorio.Visible = true; }
+            divDatosPresencial.Visible = false;
+            divDatosPresencial.Visible = false;
+            divEspecificarOficina.Visible = false;
+            divEspecificarSala.Visible = false;
+            divTipoAcomodo.Visible = false;
 
+            if (dropListModalidad.SelectedValue == "1")
+            {
+                divDatosPresencial.Visible = true;
+
+                if (dropListLugar.SelectedValue == "1" || dropListLugar.SelectedValue == "3") { divEspecificarOficina.Visible = true; }
+                if (dropListLugar.SelectedValue == "2") 
+                {
+                    divEspecificarSala.Visible = true;
+                    if (dropListSala.SelectedValue == "1")
+                    {
+                        divTipoAcomodo.Visible = true;
+                    }
+                    
+                };
+            }
 
         }
     }
