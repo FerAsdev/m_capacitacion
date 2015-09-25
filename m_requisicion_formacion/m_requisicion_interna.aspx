@@ -67,7 +67,7 @@
                                     <tr>
                                         <td style="width: 162px">Prioridad</td>
                                         <td>
-                                            <asp:DropDownList ID="prioridad" runat="server" CssClass="combobox">
+                                            <asp:DropDownList ID="prioridad" runat="server" CssClass="combobox" Width="201">
                                                 <asp:ListItem Text="-Seleccione Prioridad-" Value="0" Selected="True" />
                                                 <asp:ListItem Text="Programada" Value="1" />
                                                 <asp:ListItem Text="Urgente" Value="2" />
@@ -78,7 +78,7 @@
                                     <tr>
                                         <td style="width:162px">Modalidad</td>
                                         <td>
-                                            <asp:DropDownList ID="dropListModalidad" runat="server" AutoPostBack="true" CssClass="combobox">
+                                            <asp:DropDownList ID="dropListModalidad" runat="server" AutoPostBack="true" CssClass="combobox" Width="201">
                                                 <asp:ListItem Text="-Seleccione modalidad-" Value="0" Selected="True" />
                                                 <asp:ListItem Text="Presencial" Value="1" />
                                                 <asp:ListItem Text="En Linea" Value="2" />
@@ -92,28 +92,28 @@
                                         <tr>
                                             <td>Fecha</td>
                                             <td>
-                                                <asp:TextBox runat="server" ID="fecha" ReadOnly="true" CssClass="texto"/></td>
+                                                <asp:TextBox runat="server" ID="fecha" ReadOnly="false" CssClass="texto" Width="195" /></td>
 
                                         </tr>
                                         <tr>
                                             <td>Hora inicio</td>
                                             <td>
-                                                <asp:TextBox runat="server" ID="hora" CssClass="texto" /></td>
+                                                <asp:TextBox runat="server" ID="hora" CssClass="texto" Width="195"/></td>
                                         </tr>
                                         <tr>
                                             <td>Duracion en Horas</td>
                                             <td>
-                                                <asp:TextBox runat="server" TextMode="Number" CssClass="texto"/></td>
+                                                <asp:TextBox runat="server" TextMode="Number" CssClass="texto" Width="195"/></td>
                                         </tr>
                                         <tr>
                                             <td>Numero de Participantes</td>
                                             <td>
-                                                <asp:TextBox runat="server" TextMode="Number" CssClass="texto" /></td>
+                                                <asp:TextBox runat="server" TextMode="Number" CssClass="texto" Width="195"/></td>
                                         </tr>
                                         <tr>
                                             <td>Lugar</td>
                                             <td>
-                                                <asp:DropDownList ID="dropListLugar" runat="server" AutoPostBack="true" CssClass="combobox">
+                                                <asp:DropDownList ID="dropListLugar" runat="server" AutoPostBack="true" CssClass="combobox" Width="201">
                                                     <asp:ListItem Text="-Seleccione Lugar-" Selected="True" Value="0" />
                                                     <asp:ListItem Text="Oficina de servicio" Value="1" />
                                                     <asp:ListItem Text="Corporativo" Value="2" />
@@ -128,7 +128,7 @@
                                             <tr>
                                                 <td style="width:162px">Especifiar Lugar</td>
                                                 <td>
-                                                    <asp:TextBox runat="server" CssClass="texto"/></td>
+                                                    <asp:TextBox runat="server" CssClass="texto" Width="195"/></td>
                                             </tr>
                                         </table>
                                     </div>
@@ -137,7 +137,7 @@
                                             <tr>
                                                 <td style="width:162px">Especificar Sala</td>
                                                 <td>
-                                                    <asp:DropDownList ID="dropListSala" runat="server" AutoPostBack="true" CssClass="combobox">
+                                                    <asp:DropDownList ID="dropListSala" runat="server" AutoPostBack="true" CssClass="combobox" Width="201">
                                                         <asp:ListItem Text="-Selecione Sala-" Value="0" Selected="True" />
                                                         <asp:ListItem Text="Auditorio" Value="1" />
                                                         <asp:ListItem Text="Pecera" Value="2" />
@@ -152,7 +152,7 @@
                                                 <tr>
                                                     <td style="width:163px">Tipo de Acomodo</td>
                                                     <td>
-                                                        <asp:DropDownList ID="dropAcomodo" runat="server" CssClass="combobox">
+                                                        <asp:DropDownList ID="dropAcomodo" runat="server" CssClass="combobox" Width="201">
                                                             <asp:ListItem Text="-Seleccione Acomodo-" Value="0" Selected="True" />
                                                             <asp:ListItem Text="Herradura" Value="1" />
                                                             <asp:ListItem Text="Tipo Escuela" Value="2" />

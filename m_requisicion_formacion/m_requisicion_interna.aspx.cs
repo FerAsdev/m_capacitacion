@@ -16,25 +16,28 @@ namespace m_requisicion_formacion
             divEspecificarOficina.Visible = false;
             divEspecificarSala.Visible = false;
             divTipoAcomodo.Visible = false;
-
+            fecha.Attributes.Add("readonly", "readonly");
 
             if (dropListModalidad.SelectedValue == "1")
             {
                 divDatosPresencial.Visible = true;
 
-                if (dropListLugar.SelectedValue == "1" || dropListLugar.SelectedValue == "3") { divEspecificarOficina.Visible = true; }
-                if (dropListLugar.SelectedValue == "2") 
+                if (dropListLugar.SelectedValue == "1" || dropListLugar.SelectedValue == "3") 
+                { 
+                    divEspecificarOficina.Visible = true; 
+                }
+                if (dropListLugar.SelectedValue == "2")
                 {
                     divEspecificarSala.Visible = true;
                     if (dropListSala.SelectedValue == "1")
                     {
                         divTipoAcomodo.Visible = true;
                     }
-                    
+
                 }
             }
 
-            
+
 
         }
 
