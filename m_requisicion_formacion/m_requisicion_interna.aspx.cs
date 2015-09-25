@@ -34,5 +34,11 @@ namespace m_requisicion_formacion
             }
 
         }
+
+        protected void radioButtonPoliticas(object sender, EventArgs e)
+        {
+            if(
+            fileUploadPoliticas.Enabled = true;
+        }
     }
 }
