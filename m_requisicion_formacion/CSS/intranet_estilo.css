@@ -3,11 +3,23 @@
  * Autor: Ing. Pedro Domínguez Ponce
  * Fecha: No recuerdo... (Ultima edición: 18/06/2015)
  */
+.radioButtonList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+    .radioButtonList.horizontal li {
+        display: inline;
+    }
+
+    .radioButtonList label {
+        display: inline;
+    }
 
 body {
     background-image: url("../imagenes/pattern.png");
     background-position: 50% 50%;
-    
 }
 
 #encabezado {
@@ -66,7 +78,7 @@ body {
 
 td {
     text-align: left;
-    color:black;
+    color: black;
     font-family: Verdana, Arial, sans-serif;
 }
 
@@ -101,9 +113,9 @@ td {
 }
 
 #menu {
-        width: 250px;
-        float: left;
-        font-family: Verdana, Arial, sans-serif;
+    width: 250px;
+    float: left;
+    font-family: Verdana, Arial, sans-serif;
 }
 
 #contenido {
@@ -119,6 +131,7 @@ td {
     float: left;
     margin-left: 12px;
 }
+
 #modulo2 {
     width: 750px;
     font-family: Verdana, Arial, sans-serif;
@@ -138,11 +151,12 @@ td {
     font-size: 10pt;
     font-weight: bold;
 }
+
 .botonformulario {
     background-color: orange;
     color: white;
     font-weight: bold;
-    }
+}
 
 legend {
     color: orange;
@@ -182,9 +196,9 @@ h1 {
 }
 
 fieldset {
-    -webkit-border-radius:20px;
-    -moz-border-radius:20px;
-    border-radius:20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
 }
 
 ul {
@@ -209,6 +223,7 @@ a {
         background-color: #333333;
         color: white;
     }
+
         a.level2:hover {
             background-color: #497527;
         }
@@ -234,10 +249,10 @@ a {
 
 .completionlist {
     border: 1px solid #497527;
-    margin:0px;
-    padding:3px;
+    margin: 0px;
+    padding: 3px;
     height: 120px;
-    overflow:auto;
+    overflow: auto;
     background-color: #FFFFFF;
     font-family: Verdana, Arial, sans-serif;
     font-size: 9pt;

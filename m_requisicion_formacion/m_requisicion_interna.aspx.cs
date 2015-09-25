@@ -17,6 +17,7 @@ namespace m_requisicion_formacion
             divEspecificarSala.Visible = false;
             divTipoAcomodo.Visible = false;
 
+
             if (dropListModalidad.SelectedValue == "1")
             {
                 divDatosPresencial.Visible = true;
@@ -30,15 +31,13 @@ namespace m_requisicion_formacion
                         divTipoAcomodo.Visible = true;
                     }
                     
-                };
+                }
             }
 
+            
+
         }
 
-        protected void radioButtonPoliticas(object sender, EventArgs e)
-        {
-            if(
-            fileUploadPoliticas.Enabled = true;
-        }
+
     }
 }
