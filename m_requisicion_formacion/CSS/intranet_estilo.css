@@ -3,19 +3,6 @@
  * Autor: Ing. Pedro Domínguez Ponce
  * Fecha: No recuerdo... (Ultima edición: 18/06/2015)
  */
-.radioButtonList {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-    .radioButtonList.horizontal li {
-        display: inline;
-    }
-
-    .radioButtonList label {
-        display: inline;
-    }
 
 body {
     background-image: url("../imagenes/pattern.png");
