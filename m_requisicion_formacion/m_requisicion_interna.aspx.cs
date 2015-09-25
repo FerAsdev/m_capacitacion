@@ -36,6 +36,15 @@ namespace m_requisicion_formacion
 
                 }
             }
+            if (dropListModalidad.SelectedValue == "2")
+            {
+                divDatosPresencial.Visible = true;
+                divEspecificarSala.Visible = false;
+                divTipoAcomodo.Visible = false;
+                dropListLugar.Visible = false;
+                divEspecificarOficina.Visible = true;
+            }
+
 
 
 
