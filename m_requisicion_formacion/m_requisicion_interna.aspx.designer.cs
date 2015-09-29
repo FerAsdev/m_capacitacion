@@ -49,13 +49,13 @@ namespace m_requisicion_formacion {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDatosGenerales;
         
         /// <summary>
-        /// Control prioridad.
+        /// Control dropListPrioridad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList prioridad;
+        protected global::System.Web.UI.WebControls.DropDownList dropListPrioridad;
         
         /// <summary>
         /// Control dropListModalidad.
@@ -85,13 +85,31 @@ namespace m_requisicion_formacion {
         protected global::System.Web.UI.WebControls.TextBox fecha;
         
         /// <summary>
-        /// Control hora.
+        /// Control hora_inicio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox hora;
+        protected global::System.Web.UI.WebControls.TextBox hora_inicio;
+        
+        /// <summary>
+        /// Control duracion_horas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox duracion_horas;
+        
+        /// <summary>
+        /// Control numParticipantes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox numParticipantes;
         
         /// <summary>
         /// Control divLugar.
@@ -148,22 +166,22 @@ namespace m_requisicion_formacion {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divTipoAcomodo;
         
         /// <summary>
-        /// Control dropAcomodo.
+        /// Control dropListAcomodo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dropAcomodo;
+        protected global::System.Web.UI.WebControls.DropDownList dropListAcomodo;
         
         /// <summary>
-        /// Control RadioButtonList1.
+        /// Control rblPoliticas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList1;
+        protected global::System.Web.UI.WebControls.RadioButtonList rblPoliticas;
         
         /// <summary>
         /// Control fileUploadPoliticas.
@@ -184,13 +202,31 @@ namespace m_requisicion_formacion {
         protected global::System.Web.UI.WebControls.DropDownList dropListParticipantes;
         
         /// <summary>
-        /// Control RadioButtonList2.
+        /// Control rblMaterial.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList2;
+        protected global::System.Web.UI.WebControls.RadioButtonList rblMaterial;
+        
+        /// <summary>
+        /// Control rblCoffe.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList rblCoffe;
+        
+        /// <summary>
+        /// Control rblEvaluacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList rblEvaluacion;
         
         /// <summary>
         /// Control fileUploadEvaluacion.
@@ -200,5 +236,14 @@ namespace m_requisicion_formacion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload fileUploadEvaluacion;
+        
+        /// <summary>
+        /// Control enviarSolicitud.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button enviarSolicitud;
     }
 }

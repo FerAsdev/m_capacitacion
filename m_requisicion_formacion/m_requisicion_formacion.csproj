@@ -73,6 +73,7 @@
     <Content Include="CSS\intranet_estilo.css" />
     <Content Include="CSS\jquery-ui.css" />
     <Content Include="CSS\jquery.timepicker.css" />
+    <Content Include="Exito.aspx" />
     <Content Include="imagenes\fondologin.png" />
     <Content Include="imagenes\inferior.png" />
     <Content Include="imagenes\pattern.png" />
@@ -88,6 +89,15 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Conexiones.cs" />
+    <Compile Include="Correos.cs" />
+    <Compile Include="Exito.aspx.cs">
+      <DependentUpon>Exito.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Exito.aspx.designer.cs">
+      <DependentUpon>Exito.aspx</DependentUpon>
+    </Compile>
     <Compile Include="m_requisicion_externa.aspx.cs">
       <DependentUpon>m_requisicion_externa.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -121,6 +131,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\" />
+    <Folder Include="Data\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -17,11 +17,11 @@
     <script>
         $(document).ready(function () {
             $("#fecha").datepicker();
-            $("#hora").timepicker({ 'scrollDefault': 'now' });
+            $("#hora_inicio").timepicker({ 'scrollDefault': 'now' });
             Sys.WebForms.PageRequestManager.getInstance().add_endRequest(EndRequestHandler);
             function EndRequestHandler(sender, args) {
                 $("#fecha").datepicker();
-                $("#hora").timepicker({ 'scrollDefault': 'now' });
+                $("#hora_inicio").timepicker({ 'scrollDefault': 'now' });
             };
         });
     </script>
@@ -67,7 +67,7 @@
                                     <tr>
                                         <td style="width: 162px">Prioridad</td>
                                         <td>
-                                            <asp:DropDownList ID="prioridad" runat="server" CssClass="combobox" Width="201">
+                                            <asp:DropDownList ID="dropListPrioridad" runat="server" CssClass="combobox" Width="201">
                                                 <asp:ListItem Text="-Seleccione Prioridad-" Value="0" Selected="True" />
                                                 <asp:ListItem Text="Programada" Value="1" />
                                                 <asp:ListItem Text="Urgente" Value="2" />
@@ -98,24 +98,24 @@
                                         <tr>
                                             <td>Hora inicio</td>
                                             <td>
-                                                <asp:TextBox runat="server" ID="hora" CssClass="texto" Width="195" /></td>
+                                                <asp:TextBox runat="server" ID="hora_inicio" CssClass="texto" Width="195" /></td>
                                         </tr>
                                         <tr>
                                             <td>Duracion en Horas</td>
                                             <td>
-                                                <asp:TextBox runat="server" TextMode="Number" CssClass="texto" Width="195" /></td>
+                                                <asp:TextBox ID="duracion_horas" runat="server" TextMode="Number" CssClass="texto" Width="195" /></td>
                                         </tr>
                                         <tr>
                                             <td>Numero de Participantes</td>
                                             <td>
-                                                <asp:TextBox runat="server" TextMode="Number" CssClass="texto" Width="195" /></td>
+                                                <asp:TextBox ID="numParticipantes" runat="server" TextMode="Number" CssClass="texto" Width="195" /></td>
                                         </tr>
                                         <tr>
                                 </div>
                                 <div id="divLugar" runat="server">
                                     <table>
                                         <tr>
-                                            <td>Lugar</td>
+                                            <td style="width:163px">Lugar</td>
                                             <td>
                                                 <asp:DropDownList ID="dropListLugar" runat="server" AutoPostBack="true" CssClass="combobox" Width="201">
                                                     <asp:ListItem Text="-Seleccione Lugar-" Selected="True" Value="0" />
@@ -155,7 +155,7 @@
                                                 <tr>
                                                     <td style="width: 163px">Tipo de Acomodo</td>
                                                     <td>
-                                                        <asp:DropDownList ID="dropAcomodo" runat="server" CssClass="combobox" Width="201">
+                                                        <asp:DropDownList ID="dropListAcomodo" runat="server" CssClass="combobox" Width="201">
                                                             <asp:ListItem Text="-Seleccione Acomodo-" Value="0" Selected="True" />
                                                             <asp:ListItem Text="Herradura" Value="1" />
                                                             <asp:ListItem Text="Tipo Escuela" Value="2" />
@@ -181,9 +181,9 @@
                             <tr>
                                 <td>¿Existe procedimiento o política?</td>
                                 <td>
-                                    <asp:RadioButtonList ID="RadioButtonList1" runat="server" RepeatDirection="Horizontal" onclick="EnableDisable(this)">
+                                    <asp:RadioButtonList ID="rblPoliticas" runat="server" RepeatDirection="Horizontal" onclick="EnableDisable(this)">
                                         <asp:ListItem Text="Si" Value="1"></asp:ListItem>
-                                        <asp:ListItem Text="No" Value="2"></asp:ListItem>
+                                        <asp:ListItem Text="No" Value="2" Selected="true"></asp:ListItem>
                                     </asp:RadioButtonList>
                                 </td>
 
@@ -208,23 +208,28 @@
                             <tr>
                                 <td>Especificar si se requiere material de apoyo o equipo especial. (Bocinas, Microfono, Etc...)</td>
                                 <td>
-                                    <asp:RadioButton Text="Si" runat="server" GroupName="materialEspecial" />
-                                    <asp:RadioButton Text="No" runat="server" GroupName="materialEspecial" />
+                                    <asp:RadioButtonList ID="rblMaterial" runat="server" RepeatDirection="Horizontal">
+                                        <asp:ListItem Text="Si" />
+                                        <asp:ListItem Text="No" Selected ="true" />
+                                    </asp:RadioButtonList>
+
                                 </td>
                             </tr>
                             <tr>
                                 <td>Coffe Break</td>
                                 <td>
-                                    <asp:RadioButton Text="Si" runat="server" GroupName="coffeBreak" />
-                                    <asp:RadioButton Text="No" runat="server" GroupName="coffeBreak" />
+                                    <asp:RadioButtonList ID="rblCoffe" runat="server" RepeatDirection="Horizontal">
+                                        <asp:ListItem Text="Si" />
+                                        <asp:ListItem Text="No" Selected="True" />
+                                    </asp:RadioButtonList>
                                 </td>
                             </tr>
                             <tr>
                                 <td>¿Requiere evaluación?</td>
                                 <td>
-                                    <asp:RadioButtonList ID="RadioButtonList2" runat="server" RepeatDirection="Horizontal" onclick="EnableDisable2(this)">
+                                    <asp:RadioButtonList ID="rblEvaluacion" runat="server" RepeatDirection="Horizontal" onclick="EnableDisable2(this)">
                                         <asp:ListItem Text="Si" Value="1"></asp:ListItem>
-                                        <asp:ListItem Text="No" Value="2"></asp:ListItem>
+                                        <asp:ListItem Text="No" Value="2" Selected="True"></asp:ListItem>
                                     </asp:RadioButtonList>
                                 </td>
                             </tr>
@@ -240,6 +245,12 @@
                 <br />
                 <br />
             </div>
+            <br />
+            <br />
+            <center>
+                <asp:Button ID="enviarSolicitud" runat="server" Text="Enviar Solicitud" CssClass="botonformulario" OnClick="enviarSolicitud_Click" />
+            </center>
+            
 
         </form>
     </div>
