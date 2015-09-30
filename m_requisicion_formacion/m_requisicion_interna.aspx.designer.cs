@@ -139,6 +139,15 @@ namespace m_requisicion_formacion {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divEspecificarOficina;
         
         /// <summary>
+        /// Control textEspecificar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox textEspecificar;
+        
+        /// <summary>
         /// Control divEspecificarSala.
         /// </summary>
         /// <remarks>

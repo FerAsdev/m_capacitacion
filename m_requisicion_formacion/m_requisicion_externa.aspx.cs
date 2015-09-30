@@ -13,5 +13,10 @@ namespace m_requisicion_formacion
         {
 
         }
+
+        protected void enviarSolicitud_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
