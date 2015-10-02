@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="m_requisicion_interna.aspx.cs" Inherits="m_requisicion_formacion.m_requisicion_interna" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
 <!DOCTYPE html>
 
@@ -10,42 +11,7 @@
     <link href="CSS/jquery-ui.css" rel="stylesheet" />
     <link href="CSS/jquery.timepicker.css" rel="stylesheet" />
     <script src="Scripts/jquery-1.11.3.min.js"></script>
-    <script src="Scripts/jquery.timepicker.js"></script>
     <script src="Scripts/jquery-ui.js"></script>
-
-    <!--Script para el date y time picker jquery -->
-    <script>
-        $(document).ready(function () {
-            $("#fecha").datepicker();
-            $("#hora_inicio").timepicker({ 'scrollDefault': 'now' });
-            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(EndRequestHandler);
-            function EndRequestHandler(sender, args) {
-                $("#fecha").datepicker();
-                $("#hora_inicio").timepicker({ 'scrollDefault': 'now' });
-            };
-        });
-    </script>
-    <!-- Script para activar/desactivar los fileupload -->
-    <script type="text/javascript">
-        function EnableDisable(rbl) {
-            var rb = rbl.getElementsByTagName("input");
-            document.getElementById("<%=fileUploadPoliticas.ClientID %>").disabled = true;
-            for (var i = 0; i < rb.length; i++) {
-                if (rb[i].value == 1 && rb[i].checked) {
-                    document.getElementById("<%=fileUploadPoliticas.ClientID %>").disabled = false;
-                }
-            }
-        }
-        function EnableDisable2(rbl) {
-            var rb = rbl.getElementsByTagName("input");
-            document.getElementById("<%=fileUploadEvaluacion.ClientID %>").disabled = true;
-            for (var i = 0; i < rb.length; i++) {
-                if (rb[i].value == 1 && rb[i].checked) {
-                    document.getElementById("<%=fileUploadEvaluacion.ClientID %>").disabled = false;
-                }
-            }
-        }
-    </script>
 
 </head>
 <body>
@@ -58,7 +24,8 @@
             <div id="menu" style="width: 250px; height: 370px;"></div>
             <div id="modulo">
                 <h1>Requisición interna de capacitación</h1>
-                <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true" />
+                <ajaxToolkit:ToolkitScriptManager runat="Server" EnableScriptGlobalization="true"
+                    EnableScriptLocalization="true" ID="ToolkitScriptManager1" CombineScripts="false" />
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                     <ContentTemplate>
                         <fieldset>
@@ -74,6 +41,7 @@
                                                 <asp:ListItem Text="Urgente" Value="2" />
                                                 <asp:ListItem Text="Extra Urgente" Value="3" />
                                             </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="dropListPrioridad" InitialValue="0">Seleccione Prioridad</asp:RequiredFieldValidator>
                                         </td>
                                     </tr>
                                     <tr>
@@ -84,6 +52,7 @@
                                                 <asp:ListItem Text="Presencial" Value="1" />
                                                 <asp:ListItem Text="En Linea" Value="2" />
                                             </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="dropListModalidad" InitialValue="0">Seleccione Modalidad</asp:RequiredFieldValidator>
                                         </td>
                                     </tr>
                                 </table>
@@ -93,23 +62,35 @@
                                     <tr>
                                         <td>Fecha</td>
                                         <td>
-                                            <asp:TextBox runat="server" ID="fecha" ReadOnly="false" CssClass="texto" Width="195" /></td>
+                                            <asp:TextBox runat="server" ID="fecha" ReadOnly="false" CssClass="texto" Width="195" />
+
+                                            <ajaxToolkit:CalendarExtender ID="fecha_CalendarExtender" runat="server" Enabled="True" TargetControlID="fecha">
+                                            </ajaxToolkit:CalendarExtender>
+
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="fecha">Ingrese una Fecha</asp:RequiredFieldValidator>
+                                        </td>
 
                                     </tr>
                                     <tr>
                                         <td>Hora inicio</td>
                                         <td>
-                                            <asp:TextBox runat="server" ID="hora_inicio" CssClass="texto" Width="195" /></td>
+                                            <asp:TextBox runat="server" ID="hora_inicio" CssClass="texto" Width="195" />
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="hora_inicio">Ingrese hora de inicio.</asp:RequiredFieldValidator>
+                                        </td>
                                     </tr>
                                     <tr>
-                                        <td>Duracion en Horas</td>
+                                        <td>Duración en Horas</td>
                                         <td>
-                                            <asp:TextBox ID="duracion_horas" runat="server" TextMode="Number" CssClass="texto" Width="195" /></td>
+                                            <asp:TextBox ID="duracion_horas" runat="server" TextMode="Number" CssClass="texto" Width="195" />
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="duracion_horas">Ingrese la duracion en horas.</asp:RequiredFieldValidator>
+                                        </td>
                                     </tr>
                                     <tr>
-                                        <td>Numero de Participantes</td>
+                                        <td>Número de Participantes</td>
                                         <td>
-                                            <asp:TextBox ID="numParticipantes" runat="server" TextMode="Number" CssClass="texto" Width="195" /></td>
+                                            <asp:TextBox ID="numParticipantes" runat="server" TextMode="Number" CssClass="texto" Width="195" />
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="numParticipantes">Ingrese el número de participantes.</asp:RequiredFieldValidator>
+                                        </td>
                                     </tr>
                                     <tr>
                             </div>
@@ -124,7 +105,9 @@
                                                 <asp:ListItem Text="Corporativo" Value="2" />
                                                 <asp:ListItem Text="Otro" Value="3" />
                                             </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="dropListLugar" InitialValue="0">Seleccione Lugar</asp:RequiredFieldValidator>
                                         </td>
+                                        
                                     </tr>
                                 </table>
                             </div>
@@ -133,7 +116,10 @@
                                     <tr>
                                         <td style="width: 162px">Especifiar Lugar</td>
                                         <td>
-                                            <asp:TextBox ID="textEspecificar" runat="server" CssClass="texto" Width="195" /></td>
+                                            <asp:TextBox ID="textEspecificar" runat="server" CssClass="texto" Width="195" />
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="textEspecificar">Especifique lugar.</asp:RequiredFieldValidator>
+                                        </td>
+                                       
                                     </tr>
                                 </table>
                             </div>
@@ -149,6 +135,9 @@
                                                 <asp:ListItem Text="Sala De Juntas" Value="3" />
                                                 <asp:ListItem Text="Sala De Capacitación" Value="4" />
                                             </asp:DropDownList>
+
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="dropListSala" InitialValue="0">Especifique sala.</asp:RequiredFieldValidator>
+
                                         </td>
                                     </tr>
                                 </table>
@@ -163,6 +152,9 @@
                                                     <asp:ListItem Text="Tipo Escuela" Value="2" />
                                                     <asp:ListItem Text="Sala" Value="3" />
                                                 </asp:DropDownList>
+
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="dropListAcomodo" InitialValue="0">Especifique tipo de acomodo.</asp:RequiredFieldValidator>
+
                                             </td>
                                         </tr>
                                     </table>
@@ -196,12 +188,14 @@
                             <tr>
                                 <td>Participantes</td>
                                 <td>
-                                    <asp:DropDownList runat="server" ID="dropListParticipantes" CssClass="combobox">
+                                    <asp:DropDownList runat="server" ID="dropListParticipantes" CssClass="listitem">
                                         <asp:ListItem Text="-Seleccione Participantes-" Value="0" Selected="True" />
                                         <asp:ListItem Text="Comercial" Value="1" />
                                         <asp:ListItem Text="Staff" Value="2" />
                                         <asp:ListItem Text="Clientes" Value="3" />
                                     </asp:DropDownList>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="dropListParticipantes" InitialValue="0"><br />Seleccione participantes.</asp:RequiredFieldValidator>
+
                                 </td>
                             </tr>
                             <tr>

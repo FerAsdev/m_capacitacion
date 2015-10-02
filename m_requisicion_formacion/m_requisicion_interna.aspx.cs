@@ -102,27 +102,20 @@ namespace m_requisicion_formacion
             string file2 = Server.MapPath("~/Data/") + Path.GetFileName(fileUploadEvaluacion.FileName);
             try
             {
-
-
                 mnsj.Subject = "Nueva requisición de capacitación";
-
                 mnsj.To.Add(new MailAddress("fernando.aguilar@si-microcreditos.com"));
-
                 mnsj.From = new MailAddress("robot@si-microcreditos.com", "Requisicion Capacitacion");
-
+                mnsj.Body = "Se a recibido una nueva requisición de capacitación en la intranet de tipo Interna";
                 /* Si deseamos Adjuntar algún archivo*/
-                if (File.Exists(file1)) { mnsj.Attachments.Add(new Attachment(file1)); }
+                if (File.Exists(file1)) { 
+                    mnsj.Attachments.Add(new Attachment(file1));
+                    mnsj.Body = "Se recibio uno o varios archivos adjuntos.";
+                }
                 if (File.Exists(file2)) { mnsj.Attachments.Add(new Attachment(file2)); }
-
-
-                mnsj.Body = "Se a recibido una nueva requisición de capacitación en la intranet.";
-
                 /* Enviar */
                 Cr.MandarCorreo(mnsj);
                 mnsj.Dispose();
-
             }
-
             catch (Exception ex)
             {
                 Response.Write("Una exepcion a ocurrido " + ex);
@@ -132,13 +125,7 @@ namespace m_requisicion_formacion
                 //Eliminando archivos subidos al servidor.
                 if (File.Exists(file1)) { File.Delete(file1); }
                 if (File.Exists(file2)) { File.Delete(file2); }
-
-
-
-
             }
-
-
         }
         protected void enviarSolicitud_Click(object sender, EventArgs e)
         {

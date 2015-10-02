@@ -24,6 +24,32 @@ namespace m_requisicion_formacion
                 divNumPartic.Visible = true;
                 divEspecificarLugar.Visible = true;
             }
+        }
+
+        protected void EnviarCorreo()
+        {
+            Correos Cr = new Correos();
+            MailMessage mnsj = new MailMessage();
+            
+            try
+            {
+                mnsj.Subject = "Nueva requisición de capacitación";
+                mnsj.To.Add(new MailAddress("fernando.aguilar@si-microcreditos.com"));
+                mnsj.From = new MailAddress("robot@si-microcreditos.com", "Requisicion Capacitacion");
+                mnsj.Body = "Se a recibido una nueva requisición de capacitación de tipo Externa en la intranet.";
+
+                /* Enviar */
+                Cr.MandarCorreo(mnsj);
+
+
+            }
+
+            catch (Exception ex)
+            {
+                Response.Write("Una exepcion a ocurrido " + ex);
+            }
+            
+
 
         }
 
@@ -73,7 +99,7 @@ namespace m_requisicion_formacion
             finally
             {
                 conn.Close();
-
+                EnviarCorreo();
                 Response.Redirect("Exito.aspx");
             }
 
