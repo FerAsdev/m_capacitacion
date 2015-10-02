@@ -74,6 +74,7 @@ td {
     font-size: 10pt;
     resize: none;
     font-weight: bold;
+    margin-left: 97px;
 }
 
 .boton {
@@ -137,6 +138,7 @@ td {
     font-family: Verdana, Arial, sans-serif;
     font-size: 10pt;
     font-weight: bold;
+    margin-left: 96px;
 }
 
 .botonformulario {
