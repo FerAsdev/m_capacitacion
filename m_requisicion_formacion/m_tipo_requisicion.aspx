@@ -17,6 +17,7 @@
         <form id="form1" runat="server">
             <div id="menu" style="width: 250px; height: 370px;"></div>
             <div id="modulo" style="margin:0 auto">
+                                <center>
                 <h1>Requisición de capacitación.</h1>
 
                 <asp:DropDownList ID="tipoRequisicion" runat="server" CssClass="combobox">
@@ -25,7 +26,7 @@
                     <asp:ListItem Text="Externa" />
                 </asp:DropDownList><br /><br />
                 <asp:Button ID="Button1" runat="server" Text="Continuar" OnClick="Button1_Click" CssClass="botonformulario" />
-
+                    </center>
             </div>
         </form>
     </div>

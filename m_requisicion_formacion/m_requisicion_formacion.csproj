@@ -75,8 +75,7 @@
     <Content Include="CSS\images\ui-icons_888888_256x240.png" />
     <Content Include="CSS\images\ui-icons_cd0a0a_256x240.png" />
     <Content Include="CSS\intranet_estilo.css" />
-    <Content Include="CSS\jquery-ui.css" />
-    <Content Include="CSS\jquery.timepicker.css" />
+    <Content Include="CSS\jquery-ui-timepicker-addon.css" />
     <Content Include="Exito.aspx" />
     <Content Include="imagenes\fondologin.png" />
     <Content Include="imagenes\inferior.png" />
@@ -87,9 +86,7 @@
     <Content Include="m_tipo_requisicion.aspx" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.11.3.min.js" />
-    <Content Include="Scripts\jquery-ui.js" />
-    <Content Include="Scripts\jquery.timepicker.js" />
-    <Content Include="Scripts\jquery.timepicker.min.js" />
+    <Content Include="Scripts\jquery-ui-timepicker-addon.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

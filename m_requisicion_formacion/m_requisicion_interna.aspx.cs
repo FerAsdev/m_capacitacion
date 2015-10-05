@@ -16,6 +16,7 @@ namespace m_requisicion_formacion
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
             divDatosPresencial.Visible = false;
             divEspecificarOficina.Visible = false;
             divEspecificarSala.Visible = false;
@@ -57,6 +58,7 @@ namespace m_requisicion_formacion
 
             }
         }
+
         protected void GuardarAdjunto()
         {
             if (fileUploadPoliticas.HasFile)
@@ -94,6 +96,7 @@ namespace m_requisicion_formacion
 
             }
         }
+
         protected void EnviarCorreo()
         {
             Correos Cr = new Correos();
@@ -107,9 +110,10 @@ namespace m_requisicion_formacion
                 mnsj.From = new MailAddress("robot@si-microcreditos.com", "Requisicion Capacitacion");
                 mnsj.Body = "Se a recibido una nueva requisición de capacitación en la intranet de tipo Interna";
                 /* Si deseamos Adjuntar algún archivo*/
-                if (File.Exists(file1)) { 
-                    mnsj.Attachments.Add(new Attachment(file1));
+                if (File.Exists(file1)) {
                     mnsj.Body = "Se recibio uno o varios archivos adjuntos.";
+                    mnsj.Attachments.Add(new Attachment(file1));
+                    
                 }
                 if (File.Exists(file2)) { mnsj.Attachments.Add(new Attachment(file2)); }
                 /* Enviar */
@@ -127,14 +131,14 @@ namespace m_requisicion_formacion
                 if (File.Exists(file2)) { File.Delete(file2); }
             }
         }
+
         protected void enviarSolicitud_Click(object sender, EventArgs e)
         {
             //Declaracion de variables para uso en consultas de base datos.
-
             string var_prioridad = dropListPrioridad.SelectedItem.Text.Trim();
             string var_modalidad = dropListModalidad.SelectedItem.Text.Trim();
             string var_fecha = fecha.Text.Trim();
-            string var_hora_inicio = hora_inicio.Text.Trim();
+            string var_hora_inicio = (horas.Text + ":" + minutos.Text + meridiano.Text).Trim();
             string var_duracion = duracion_horas.Text.Trim();
             string var_numParticipantes = numParticipantes.Text.Trim();
             string var_lugar;
@@ -159,7 +163,7 @@ namespace m_requisicion_formacion
             string var_evaluacion = rblEvaluacion.SelectedItem.Text.Trim();
 
 
-            string queryInsert1 = "INSERT INTO DATOS_REQUISICION (PRIORIDAD, MODALIDAD, FECHA, HORA_INICIO, DURACION_HORAS, NUMERO_PARTICIPANTES, LUGAR, SALA, ACOMODO, POLITICAS, PARTICIPANTES, MATERIAL_EXTRA, COFFE_BREAK, EVALUACION) VALUES(@PRIORIDAD, @MODALIDAD, @FECHA, @HORA_INICIO, @DURACION, @NUM_PARTICIPANTES, @LUGAR, @SALA, @ACOMODO, @POLITICAS, @PARTICIPANTES, @MATERIAL, @COFFE, @EVALUACION)";
+            string queryInsert1 = "INSERT INTO DATOS_REQUISICION  VALUES(@PRIORIDAD, @MODALIDAD, @FECHA, @HORA_INICIO, @DURACION, @NUM_PARTICIPANTES, @LUGAR, @SALA, @ACOMODO, @POLITICAS, @PARTICIPANTES, @MATERIAL, @COFFE, @EVALUACION)";
 
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PRUEBAS"].ToString());
             try
@@ -188,7 +192,6 @@ namespace m_requisicion_formacion
                 string msg = "Fetch Error: ";
                 msg += ex.Message;
                 throw new Exception(msg);
-
             }
             finally
             {
@@ -198,11 +201,6 @@ namespace m_requisicion_formacion
 
                 Response.Redirect("/Exito.aspx");
             }
-
-
         }
-
     }
-
-
 }
