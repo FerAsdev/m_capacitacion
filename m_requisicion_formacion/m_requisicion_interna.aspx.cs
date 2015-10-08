@@ -22,6 +22,10 @@ namespace m_requisicion_formacion
             divEspecificarSala.Visible = false;
             divTipoAcomodo.Visible = false;
             divLugar.Visible = false;
+            divOficinas.Visible = false;
+            trStaff.Visible = false;
+            trPersonalOficina.Visible = false;
+            trMaterialExtra.Visible = false;
             fecha.Attributes.Add("readonly", "readonly");
 
             if (dropListModalidad.SelectedValue == "1")
@@ -29,21 +33,17 @@ namespace m_requisicion_formacion
                 divDatosPresencial.Visible = true;
                 divLugar.Visible = true;
                 dropListLugar.Visible = true;
-
                 divEspecificarOficina.Visible = false;
 
-                if (dropListLugar.SelectedValue == "1" || dropListLugar.SelectedValue == "3")
-                {
-                    divEspecificarOficina.Visible = true;
-                }
+                if (dropListLugar.SelectedValue == "1") { divOficinas.Visible = true; }
+                if (dropListLugar.SelectedValue == "3") { divEspecificarOficina.Visible = true; }
                 if (dropListLugar.SelectedValue == "2")
                 {
-                    divEspecificarSala.Visible = true;
-                    if (dropListSala.SelectedValue == "1")
-                    {
-                        divTipoAcomodo.Visible = true;
+                    divEspecificarSala.Visible = true; 
+                    if (dropListSala.SelectedValue == "1") 
+                    { 
+                        divTipoAcomodo.Visible = true; 
                     }
-
                 }
             }
             if (dropListModalidad.SelectedValue == "2")
@@ -57,6 +57,10 @@ namespace m_requisicion_formacion
                 dropListLugar.Visible = false;
 
             }
+            if (dropListParticipantes.SelectedValue == "1") { trPersonalOficina.Visible = true; }
+            if (dropListParticipantes.SelectedValue == "2") { trStaff.Visible = true; }
+            if (rblMaterial.SelectedValue == "1") { trMaterialExtra.Visible = true; }
+
         }
 
         protected void GuardarAdjunto()
@@ -110,10 +114,11 @@ namespace m_requisicion_formacion
                 mnsj.From = new MailAddress("robot@si-microcreditos.com", "Requisicion Capacitacion");
                 mnsj.Body = "Se a recibido una nueva requisición de capacitación en la intranet de tipo Interna";
                 /* Si deseamos Adjuntar algún archivo*/
-                if (File.Exists(file1)) {
+                if (File.Exists(file1))
+                {
                     mnsj.Body = "Se recibio uno o varios archivos adjuntos.";
                     mnsj.Attachments.Add(new Attachment(file1));
-                    
+
                 }
                 if (File.Exists(file2)) { mnsj.Attachments.Add(new Attachment(file2)); }
                 /* Enviar */
@@ -132,18 +137,13 @@ namespace m_requisicion_formacion
             }
         }
 
-        protected void enviarSolicitud_Click(object sender, EventArgs e)
+        protected void InsertarDatos()
         {
-            //Declaracion de variables para uso en consultas de base datos.
-            string var_prioridad = dropListPrioridad.SelectedItem.Text.Trim();
-            string var_modalidad = dropListModalidad.SelectedItem.Text.Trim();
-            string var_fecha = fecha.Text.Trim();
             string var_hora_inicio = (horas.Text + ":" + minutos.Text + meridiano.Text).Trim();
-            string var_duracion = duracion_horas.Text.Trim();
-            string var_numParticipantes = numParticipantes.Text.Trim();
             string var_lugar;
             string var_sala;
             string var_acomodo;
+            
             if (dropListLugar.SelectedValue != "2")
             {
                 var_lugar = textEspecificar.Text.Trim();
@@ -156,51 +156,108 @@ namespace m_requisicion_formacion
                 var_sala = dropListSala.SelectedItem.Text.Trim();
                 var_acomodo = dropListAcomodo.SelectedItem.Text.Trim();
             }
-            string var_politicas = rblPoliticas.SelectedItem.Text.Trim();
-            string var_participantes = dropListParticipantes.SelectedItem.Text.Trim();
-            string var_material = rblMaterial.SelectedItem.Text.Trim();
-            string var_coffe = rblCoffe.SelectedItem.Text.Trim();
-            string var_evaluacion = rblEvaluacion.SelectedItem.Text.Trim();
+            string queryInsert;
+            if (dropListLugar.SelectedValue == "1") 
+            {
+                queryInsert = "INSERTAR_REQUI_INTERNA_OFICINAS"; 
+            } 
+            else 
+            {
+                queryInsert = "INSERTAR_REQUI_INTERNA"; 
+                
+            }
 
 
-            string queryInsert1 = "INSERT INTO DATOS_REQUISICION  VALUES(@PRIORIDAD, @MODALIDAD, @FECHA, @HORA_INICIO, @DURACION, @NUM_PARTICIPANTES, @LUGAR, @SALA, @ACOMODO, @POLITICAS, @PARTICIPANTES, @MATERIAL, @COFFE, @EVALUACION)";
+
 
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PRUEBAS"].ToString());
             try
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand(queryInsert1, conn);
+                SqlCommand cmd = new SqlCommand(queryInsert, conn);
                 cmd.Connection = conn;
-                cmd.Parameters.AddWithValue("@PRIORIDAD", var_prioridad);
-                cmd.Parameters.AddWithValue("@MODALIDAD", var_modalidad);
-                cmd.Parameters.AddWithValue("@FECHA", var_fecha);
+                cmd.CommandType = CommandType.StoredProcedure;
+                if (dropListLugar.SelectedValue == "1")
+                {
+                    //Datos de la tabla estado oficinas.
+                    cmd.Parameters.AddWithValue("@ALAMO", CheckBox1.Checked);
+                    cmd.Parameters.AddWithValue("@APIZACO", CheckBox2.Checked);
+                    cmd.Parameters.AddWithValue("@CATEMACO", CheckBox3.Checked);
+                    cmd.Parameters.AddWithValue("@COATZACOALCOS", CheckBox4.Checked);
+                    cmd.Parameters.AddWithValue("@CORDOBA", CheckBox5.Checked);
+                    cmd.Parameters.AddWithValue("@FORTIN", CheckBox6.Checked);
+                    cmd.Parameters.AddWithValue("@HUAMANTLA", CheckBox7.Checked);
+                    cmd.Parameters.AddWithValue("@JUAN_PABLO", CheckBox8.Checked);
+                    cmd.Parameters.AddWithValue("@MARTINEZ", CheckBox9.Checked);
+                    cmd.Parameters.AddWithValue("@ORIZABA", CheckBox10.Checked);
+                    cmd.Parameters.AddWithValue("@POZA_RICA", CheckBox11.Checked);
+                    cmd.Parameters.AddWithValue("@PUEBLA_SUR", CheckBox12.Checked);
+                    cmd.Parameters.AddWithValue("@TEJERIA", CheckBox13.Checked);
+                    cmd.Parameters.AddWithValue("@TEZIUTLAN", CheckBox14.Checked);
+                    cmd.Parameters.AddWithValue("@TLAXCALA", CheckBox15.Checked);
+                    cmd.Parameters.AddWithValue("@TUXPAN", CheckBox16.Checked);
+                    cmd.Parameters.AddWithValue("@VERACRUZ", CheckBox17.Checked);
+                    cmd.Parameters.AddWithValue("@XALAPA", CheckBox18.Checked);
+                    cmd.Parameters.AddWithValue("@ZACATELCO", CheckBox19.Checked);
+                }
+                //Datos de la tabla Requi Interna
+                cmd.Parameters.AddWithValue("@PRIORIDAD", dropListPrioridad.SelectedItem.Text.Trim());
+                cmd.Parameters.AddWithValue("@MODALIDAD", dropListModalidad.SelectedItem.Text.Trim());
+                cmd.Parameters.AddWithValue("@TEMA", txtTema.Text.Trim());
+                cmd.Parameters.AddWithValue("@FECHA", fecha.Text.Trim());
                 cmd.Parameters.AddWithValue("@HORA_INICIO", var_hora_inicio);
-                cmd.Parameters.AddWithValue("@DURACION", var_duracion);
-                cmd.Parameters.AddWithValue("@NUM_PARTICIPANTES", var_numParticipantes);
+                cmd.Parameters.AddWithValue("@DURACION", duracion_horas.Text.Trim());
+                cmd.Parameters.AddWithValue("@NUMERO_PARTICIPANTES", numParticipantes.Text.Trim());
                 cmd.Parameters.AddWithValue("@LUGAR", var_lugar);
                 cmd.Parameters.AddWithValue("@SALA", var_sala);
                 cmd.Parameters.AddWithValue("@ACOMODO", var_acomodo);
-                cmd.Parameters.AddWithValue("@POLITICAS", var_politicas);
-                cmd.Parameters.AddWithValue("@PARTICIPANTES", var_participantes);
-                cmd.Parameters.AddWithValue("@MATERIAL", var_material);
-                cmd.Parameters.AddWithValue("@COFFE", var_coffe);
-                cmd.Parameters.AddWithValue("@EVALUACION", var_evaluacion);
+                cmd.Parameters.AddWithValue("@POLITICAS", rblPoliticas.SelectedItem.Text.Trim());
+                cmd.Parameters.AddWithValue("@PARTICIPANTES", dropListParticipantes.SelectedItem.Text.Trim());
+                cmd.Parameters.AddWithValue("@MATERIAL", rblMaterial.SelectedItem.Text.Trim());
+                cmd.Parameters.AddWithValue("@COFFE", rblCoffe.SelectedItem.Text.Trim());
+                cmd.Parameters.AddWithValue("@EVALUACION", rblEvaluacion.SelectedItem.Text.Trim());
+
                 cmd.ExecuteNonQuery();
-            }
-            catch (System.Data.SqlClient.SqlException ex)
-            {
-                string msg = "Fetch Error: ";
-                msg += ex.Message;
-                throw new Exception(msg);
-            }
-            finally
-            {
                 conn.Close();
+
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        protected void enviarSolicitud_Click(object sender, EventArgs e)
+        {
+            
+            try
+            {
+                InsertarDatos();
                 GuardarAdjunto();
                 EnviarCorreo();
-
                 Response.Redirect("/Exito.aspx");
             }
+            catch (Exception ex)
+            {
+                
+                throw ex;
+            }
+
+           
+
         }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void LinkButton2_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

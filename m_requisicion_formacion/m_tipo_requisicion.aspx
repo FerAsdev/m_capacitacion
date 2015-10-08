@@ -24,6 +24,7 @@
                     <asp:ListItem Text="-Seleccione Tipo de Requisicion-" />
                     <asp:ListItem Text="Interna" />
                     <asp:ListItem Text="Externa" />
+                    <asp:listitem text="Auditoria" />
                 </asp:DropDownList><br /><br />
                 <asp:Button ID="Button1" runat="server" Text="Continuar" OnClick="Button1_Click" CssClass="botonformulario" />
                     </center>

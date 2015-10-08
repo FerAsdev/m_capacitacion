@@ -20,9 +20,13 @@ namespace m_requisicion_formacion
             {
                 Response.Redirect("/m_requisicion_interna.aspx");
             }
-            else
+            if(tipoRequisicion.SelectedValue == "Externa")
             {
                 Response.Redirect("/m_requisicion_externa.aspx");
+            }
+            if (tipoRequisicion.SelectedValue == "Auditoria")
+            {
+                Response.Redirect("/m_requisicion_auditoria.aspx");
             }
         }
     }

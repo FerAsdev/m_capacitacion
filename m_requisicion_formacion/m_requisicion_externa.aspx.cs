@@ -16,6 +16,7 @@ namespace m_requisicion_formacion
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            trProveedor.Visible = false;
             fecha.Attributes.Add("readonly", "readonly");
             divNumPartic.Visible = false;
             divEspecificarLugar.Visible = false;
@@ -23,6 +24,10 @@ namespace m_requisicion_formacion
             {
                 divNumPartic.Visible = true;
                 divEspecificarLugar.Visible = true;
+            }
+            if (rbProveedor.SelectedValue == "1")
+            {
+                trProveedor.Visible = true;
             }
         }
 
@@ -69,7 +74,7 @@ namespace m_requisicion_formacion
                 var_numParticipantes = numParticipantes.Text.Trim();
             }
             //Conexion a la BD
-            string query_insert = "INSERT INTO REQUI_EXTERNA VALUES (@PRIORIDAD, @MODALIDAD, @FECHA, @HORA_INICIO, @DURACION_HORAS, @NUM_PARTICIPANTES, @LUGAR, @PROVEEDOR, @VIATICOS, @COSTO_APROX)";
+            string query_insert = "INSERT INTO REQUI_EXTERNA VALUES (@PRIORIDAD, @MODALIDAD,@TEMA, @FECHA, @HORA_INICIO, @DURACION_HORAS, @NUM_PARTICIPANTES, @LUGAR, @PROVEEDOR, @VIATICOS, @COSTO_APROX)";
 
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PRUEBAS"].ToString());
             
@@ -80,6 +85,7 @@ namespace m_requisicion_formacion
                 cmd.Connection = conn;
                 cmd.Parameters.AddWithValue("@PRIORIDAD", dropListPrioridad.SelectedItem.Text.Trim());
                 cmd.Parameters.AddWithValue("@MODALIDAD", dropListModalidad.SelectedItem.Text.Trim());
+                cmd.Parameters.AddWithValue("@TEMA", txtTema.Text.Trim());
                 cmd.Parameters.AddWithValue("@FECHA", fecha.Text.Trim());
                 cmd.Parameters.AddWithValue("@HORA_INICIO", var_hora_inicio);
                 cmd.Parameters.AddWithValue("@DURACION_HORAS", duracion_horas.Text.Trim());

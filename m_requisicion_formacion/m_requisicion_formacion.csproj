@@ -81,6 +81,7 @@
     <Content Include="imagenes\inferior.png" />
     <Content Include="imagenes\pattern.png" />
     <Content Include="imagenes\superior.png" />
+    <Content Include="m_requisicion_auditoria.aspx" />
     <Content Include="m_requisicion_externa.aspx" />
     <Content Include="m_requisicion_interna.aspx" />
     <Content Include="m_tipo_requisicion.aspx" />
@@ -97,6 +98,13 @@
     </Compile>
     <Compile Include="Exito.aspx.designer.cs">
       <DependentUpon>Exito.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="m_requisicion_auditoria.aspx.cs">
+      <DependentUpon>m_requisicion_auditoria.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="m_requisicion_auditoria.aspx.designer.cs">
+      <DependentUpon>m_requisicion_auditoria.aspx</DependentUpon>
     </Compile>
     <Compile Include="m_requisicion_externa.aspx.cs">
       <DependentUpon>m_requisicion_externa.aspx</DependentUpon>
