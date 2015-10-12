@@ -61,6 +61,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CSS\estilo_calendario.css" />
     <Content Include="CSS\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="CSS\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="CSS\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -81,6 +82,7 @@
     <Content Include="imagenes\inferior.png" />
     <Content Include="imagenes\pattern.png" />
     <Content Include="imagenes\superior.png" />
+    <Content Include="ListBox Upload Files.aspx" />
     <Content Include="m_requisicion_auditoria.aspx" />
     <Content Include="m_requisicion_externa.aspx" />
     <Content Include="m_requisicion_interna.aspx" />
@@ -98,6 +100,13 @@
     </Compile>
     <Compile Include="Exito.aspx.designer.cs">
       <DependentUpon>Exito.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ListBox Upload Files.aspx.cs">
+      <DependentUpon>ListBox Upload Files.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListBox Upload Files.aspx.designer.cs">
+      <DependentUpon>ListBox Upload Files.aspx</DependentUpon>
     </Compile>
     <Compile Include="m_requisicion_auditoria.aspx.cs">
       <DependentUpon>m_requisicion_auditoria.aspx</DependentUpon>

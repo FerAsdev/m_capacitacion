@@ -62,6 +62,7 @@ namespace m_requisicion_formacion
         {
             string var_numParticipantes;
             string var_lugar;
+            string var_proveedor ="No especificado";
             string var_hora_inicio = (horas.Text + ":" + minutos.Text + meridiano.Text).Trim();
             if (dropListModalidad.SelectedValue != "1")
             {
@@ -72,6 +73,10 @@ namespace m_requisicion_formacion
             {
                 var_lugar = textEspecificar.Text.Trim();
                 var_numParticipantes = numParticipantes.Text.Trim();
+            }
+            if (rbProveedor.SelectedValue == "1")
+            {
+                var_proveedor = txtProveedor.Text.Trim();
             }
             //Conexion a la BD
             string query_insert = "INSERT INTO REQUI_EXTERNA VALUES (@PRIORIDAD, @MODALIDAD,@TEMA, @FECHA, @HORA_INICIO, @DURACION_HORAS, @NUM_PARTICIPANTES, @LUGAR, @PROVEEDOR, @VIATICOS, @COSTO_APROX)";
@@ -91,7 +96,7 @@ namespace m_requisicion_formacion
                 cmd.Parameters.AddWithValue("@DURACION_HORAS", duracion_horas.Text.Trim());
                 cmd.Parameters.AddWithValue("@NUM_PARTICIPANTES", var_numParticipantes);
                 cmd.Parameters.AddWithValue("@LUGAR", var_lugar);
-                cmd.Parameters.AddWithValue("@PROVEEDOR", rbProveedor.SelectedItem.Text.Trim());
+                cmd.Parameters.AddWithValue("@PROVEEDOR", var_proveedor);
                 cmd.Parameters.AddWithValue("@VIATICOS", rbViaticos.SelectedItem.Text.Trim());
                 cmd.Parameters.AddWithValue("@COSTO_APROX", txtCosto.Text.Trim());
                 cmd.ExecuteNonQuery();

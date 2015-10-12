@@ -9,14 +9,25 @@
     <title></title>
     <link href="CSS/intranet_estilo.css" rel="stylesheet" />
 
-    <style type="text/css">
-        .auto-style1 {
-            width: 166px;
-        }
-        </style>
+
 
 </head>
 <body>
+    <script>
+        function toggleCheckBoxes(elem) {
+
+            var div = document.getElementById('<% = DivOficinas.ClientID %>');
+
+                    var chk = div.getElementsByTagName('input');
+                    var len = chk.length;
+
+                    for (var i = 0; i < len; i++) {
+                        if (chk[i].type === 'checkbox') {
+                            chk[i].checked = elem.checked;
+                        }
+                    }
+                }
+    </script>
     <div id="encabezado">
         <div id="logo"></div>
         <div id="relleno"></div>
@@ -61,11 +72,14 @@
                             <ContentTemplate>
                                 <div id="DivOficinas" runat="server" style="margin-left: 2%">
                                     <h3>Oficinas de Servicio</h3>
-                                    <asp:LinkButton Text="Seleccionar Todas" runat="server" ForeColor="Orange" OnClick="SelecAll" CausesValidation="false" />
-                                    <asp:LinkButton Text="Deseleccionar Todas" runat="server" ForeColor="Orange" Style="margin-left: 50px" OnClick="SelectNone" CausesValidation="false" />
-                                    <br />
+                                  <br />
                                     <br />
                                     <table>
+                                        <tr>
+                                            <td>
+                                            <input type="checkbox" id="chkAll" onclick="toggleCheckBoxes(this)" />Seleccionar Todas
+                                            </td>
+                                        </tr>
                                         <tr>
                                             <td>
                                                 <asp:CheckBox ID="CheckBox1" runat="server" Text="Os Alamo" />

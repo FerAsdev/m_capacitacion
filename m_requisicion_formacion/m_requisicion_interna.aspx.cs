@@ -140,22 +140,53 @@ namespace m_requisicion_formacion
         protected void InsertarDatos()
         {
             string var_hora_inicio = (horas.Text + ":" + minutos.Text + meridiano.Text).Trim();
-            string var_lugar;
-            string var_sala;
-            string var_acomodo;
+            string var_lugar="";
+            string var_sala="";
+            string var_acomodo="";
+            string var_personal ="";
             
-            if (dropListLugar.SelectedValue != "2")
+            if (dropListParticipantes.SelectedValue == "1") { var_personal = dropPersonalComercial.SelectedItem.Text.Trim(); }
+            if (dropListParticipantes.SelectedValue == "2") { var_personal = "Staff: "+txtAreasStaff.Text.Trim(); }
+            if (dropListParticipantes.SelectedValue == "3") { var_personal = dropListParticipantes.SelectedItem.Text.Trim();}
+            
+            string var_materialExtra = "No Especificado";
+            
+            if (rblMaterial.SelectedValue == "1") { var_materialExtra = txtMaterialExtral.Text.Trim(); }
+
+            if (dropListLugar.SelectedValue == "1")
+            {
+                var_lugar = "Oficina de Servicio";
+                var_sala = "No aplica";
+                var_acomodo = "No aplica";
+            }
+            if (dropListLugar.SelectedValue == "2")
+            {
+                var_lugar = dropListLugar.SelectedItem.Text.Trim();
+                var_sala = dropListSala.SelectedItem.Text.Trim();
+                if (dropListSala.SelectedValue != "1")
+                {
+                    var_acomodo = "No aplica";
+                }
+                else 
+                { 
+                    var_acomodo = dropListAcomodo.SelectedItem.Text.Trim(); 
+                }
+                
+            }
+            if (dropListLugar.SelectedValue == "3")
             {
                 var_lugar = textEspecificar.Text.Trim();
                 var_sala = "No aplica";
                 var_acomodo = "No aplica";
             }
-            else
+
+            if (dropListModalidad.SelectedValue == "2")
             {
-                var_lugar = dropListLugar.SelectedItem.Text.Trim();
-                var_sala = dropListSala.SelectedItem.Text.Trim();
-                var_acomodo = dropListAcomodo.SelectedItem.Text.Trim();
+                var_lugar = textEspecificar.Text.Trim();
+                var_sala = "No aplica";
+                var_acomodo = "No aplica";
             }
+            //Seleccionar el tipo de query a ejecutar.
             string queryInsert;
             if (dropListLugar.SelectedValue == "1") 
             {
@@ -164,12 +195,7 @@ namespace m_requisicion_formacion
             else 
             {
                 queryInsert = "INSERTAR_REQUI_INTERNA"; 
-                
             }
-
-
-
-
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PRUEBAS"].ToString());
             try
             {
@@ -212,26 +238,21 @@ namespace m_requisicion_formacion
                 cmd.Parameters.AddWithValue("@SALA", var_sala);
                 cmd.Parameters.AddWithValue("@ACOMODO", var_acomodo);
                 cmd.Parameters.AddWithValue("@POLITICAS", rblPoliticas.SelectedItem.Text.Trim());
-                cmd.Parameters.AddWithValue("@PARTICIPANTES", dropListParticipantes.SelectedItem.Text.Trim());
-                cmd.Parameters.AddWithValue("@MATERIAL", rblMaterial.SelectedItem.Text.Trim());
+                cmd.Parameters.AddWithValue("@PARTICIPANTES", var_personal);
+                cmd.Parameters.AddWithValue("@MATERIAL", var_materialExtra);
                 cmd.Parameters.AddWithValue("@COFFE", rblCoffe.SelectedItem.Text.Trim());
                 cmd.Parameters.AddWithValue("@EVALUACION", rblEvaluacion.SelectedItem.Text.Trim());
-
                 cmd.ExecuteNonQuery();
                 conn.Close();
-
-
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-
         }
 
         protected void enviarSolicitud_Click(object sender, EventArgs e)
-        {
-            
+        {   
             try
             {
                 InsertarDatos();
@@ -244,9 +265,6 @@ namespace m_requisicion_formacion
                 
                 throw ex;
             }
-
-           
-
         }
 
         protected void LinkButton1_Click(object sender, EventArgs e)
