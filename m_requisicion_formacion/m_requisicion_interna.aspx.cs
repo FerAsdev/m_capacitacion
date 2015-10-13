@@ -254,9 +254,11 @@ namespace m_requisicion_formacion
         {
             try
             {
+                EnviarSolicitud.Enabled = false;
                 InsertarDatos();
                 GuardarAdjunto();
                 EnviarCorreo();
+                
                 ClientScript.RegisterStartupScript(this.GetType(), "showMsj", "alerta()", true); 
                
             }

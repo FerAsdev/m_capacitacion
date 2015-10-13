@@ -11,7 +11,8 @@
         <script type="text/javascript">
             function alerta() {
                 alert('La solicitud se a procesado con exito!');
-                window.location="/m_requisicion_auditoria.aspx"
+                window.location = "/m_requisicion_auditoria.aspx"
+
             }
     </script>
 
