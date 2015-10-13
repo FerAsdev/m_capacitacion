@@ -148,6 +148,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Base de datos\" />
     <Folder Include="Content\" />
     <Folder Include="Data\" />
   </ItemGroup>
