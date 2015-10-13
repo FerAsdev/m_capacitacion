@@ -17,23 +17,12 @@ namespace m_requisicion_formacion
 
         }
 
-        protected void SelecAll(object sender, EventArgs e)
-        {
-           
-
-        }
-
-        protected void SelectNone(object sender, EventArgs e)
-        {
-           
-
-        }
-
         protected void InsertarDatos()
         {
             //INSERT DESDE PROCEDIMIENTO ALMACENADO EN BASE DE DATOS.
             string queryInsert1 = "INSERTAR_REQUI_AUDITORIA";
-
+            int id_requi;
+            Consultas insertar = new Consultas();
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PRUEBAS"].ToString());
 
             try
@@ -42,33 +31,40 @@ namespace m_requisicion_formacion
                 SqlCommand cmd = new SqlCommand(queryInsert1, conn);
                 cmd.Connection = conn;
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@ALAMO", CheckBox1.Checked);
-                cmd.Parameters.AddWithValue("@APIZACO", CheckBox2.Checked);
-                cmd.Parameters.AddWithValue("@CATEMACO", CheckBox3.Checked);
-                cmd.Parameters.AddWithValue("@COATZACOALCOS", CheckBox4.Checked);
-                cmd.Parameters.AddWithValue("@CORDOBA", CheckBox5.Checked);
-                cmd.Parameters.AddWithValue("@FORTIN", CheckBox6.Checked);
-                cmd.Parameters.AddWithValue("@HUAMANTLA", CheckBox7.Checked);
-                cmd.Parameters.AddWithValue("@JUAN_PABLO", CheckBox8.Checked);
-                cmd.Parameters.AddWithValue("@MARTINEZ", CheckBox9.Checked);
-                cmd.Parameters.AddWithValue("@ORIZABA", CheckBox10.Checked);
-                cmd.Parameters.AddWithValue("@POZA_RICA", CheckBox11.Checked);
-                cmd.Parameters.AddWithValue("@PUEBLA_SUR", CheckBox12.Checked);
-                cmd.Parameters.AddWithValue("@TEJERIA", CheckBox13.Checked);
-                cmd.Parameters.AddWithValue("@TEZIUTLAN", CheckBox14.Checked);
-                cmd.Parameters.AddWithValue("@TLAXCALA", CheckBox15.Checked);
-                cmd.Parameters.AddWithValue("@TUXPAN", CheckBox16.Checked);
-                cmd.Parameters.AddWithValue("@VERACRUZ", CheckBox17.Checked);
-                cmd.Parameters.AddWithValue("@XALAPA", CheckBox18.Checked);
-                cmd.Parameters.AddWithValue("@ZACATELCO", CheckBox19.Checked);
                 cmd.Parameters.AddWithValue("@MES", DropListMeses.SelectedItem.Text.Trim());
                 cmd.Parameters.AddWithValue("@DESCRIPCION", TextDescripcion.Text.Trim());
                 cmd.ExecuteNonQuery();
                 conn.Close();
+                SqlCommand cmd2 = new SqlCommand("select IDENT_CURRENT ('REQUI_AUDITORIA')", conn);
+                cmd2.Connection = conn;
+                conn.Open();
+                id_requi = Convert.ToInt32(cmd2.ExecuteScalar());
+                //Insert de los check list.
+                if (CheckAlamo.Checked) { insertar.insertarOfiAud(id_requi, 15); }
+                if (CheckApizaco.Checked) { insertar.insertarOfiAud(id_requi, 11); }
+                if (CheckCatemaco.Checked) { insertar.insertarOfiAud(id_requi, 18); }
+                if (CheckCoatza.Checked) { insertar.insertarOfiAud(id_requi, 28); }
+                if (CheckCordoba.Checked) { insertar.insertarOfiAud(id_requi, 4); }
+                if (CheckFortin.Checked) { insertar.insertarOfiAud(id_requi, 16); }
+                if (CheckHuamantla.Checked) { insertar.insertarOfiAud(id_requi, 20); }
+                if (CheckJuanPablo.Checked) { insertar.insertarOfiAud(id_requi, 27); }
+                if (CheckMartinez.Checked) { insertar.insertarOfiAud(id_requi, 13); }
+                if (CheckOrizaba.Checked) { insertar.insertarOfiAud(id_requi, 7); }
+                if (CheckPoza.Checked) { insertar.insertarOfiAud(id_requi, 5); }
+                if (CheckPueblaSur.Checked) { insertar.insertarOfiAud(id_requi, 22); }
+                if (CheckTejeria.Checked) { insertar.insertarOfiAud(id_requi, 17); }
+                if (CheckTeziutlan.Checked) { insertar.insertarOfiAud(id_requi, 12); }
+                if (CheckTlaxcala.Checked) { insertar.insertarOfiAud(id_requi, 10); }
+                if (CheckTuxpan.Checked) { insertar.insertarOfiAud(id_requi, 6); }
+                if (CheckVeracruz.Checked) { insertar.insertarOfiAud(id_requi, 9); }
+                if (CheckXalapa.Checked) { insertar.insertarOfiAud(id_requi, 8); }
+                if (CheckZacatelco.Checked) { insertar.insertarOfiAud(id_requi, 21); }
+                conn.Close();
+
             }
             catch (Exception ex)
             {
-                
+
                 throw ex;
             }
 
@@ -77,7 +73,9 @@ namespace m_requisicion_formacion
 
         protected void EnviarSolicitud(object sender, EventArgs e)
         {
-            InsertarDatos();
+            InsertarDatos();            
+            ClientScript.RegisterStartupScript(this.GetType(), "showMsj", "alerta()", true);        
+            
 
         }
     }

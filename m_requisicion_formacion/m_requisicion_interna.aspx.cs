@@ -39,10 +39,10 @@ namespace m_requisicion_formacion
                 if (dropListLugar.SelectedValue == "3") { divEspecificarOficina.Visible = true; }
                 if (dropListLugar.SelectedValue == "2")
                 {
-                    divEspecificarSala.Visible = true; 
-                    if (dropListSala.SelectedValue == "1") 
-                    { 
-                        divTipoAcomodo.Visible = true; 
+                    divEspecificarSala.Visible = true;
+                    if (dropListSala.SelectedValue == "1")
+                    {
+                        divTipoAcomodo.Visible = true;
                     }
                 }
             }
@@ -140,17 +140,17 @@ namespace m_requisicion_formacion
         protected void InsertarDatos()
         {
             string var_hora_inicio = (horas.Text + ":" + minutos.Text + meridiano.Text).Trim();
-            string var_lugar="";
-            string var_sala="";
-            string var_acomodo="";
-            string var_personal ="";
-            
+            string var_lugar = "";
+            string var_sala = "";
+            string var_acomodo = "";
+            string var_personal = "";
+
             if (dropListParticipantes.SelectedValue == "1") { var_personal = dropPersonalComercial.SelectedItem.Text.Trim(); }
-            if (dropListParticipantes.SelectedValue == "2") { var_personal = "Staff: "+txtAreasStaff.Text.Trim(); }
-            if (dropListParticipantes.SelectedValue == "3") { var_personal = dropListParticipantes.SelectedItem.Text.Trim();}
-            
+            if (dropListParticipantes.SelectedValue == "2") { var_personal = "Staff: " + txtAreasStaff.Text.Trim(); }
+            if (dropListParticipantes.SelectedValue == "3") { var_personal = dropListParticipantes.SelectedItem.Text.Trim(); }
+
             string var_materialExtra = "No Especificado";
-            
+
             if (rblMaterial.SelectedValue == "1") { var_materialExtra = txtMaterialExtral.Text.Trim(); }
 
             if (dropListLugar.SelectedValue == "1")
@@ -167,11 +167,11 @@ namespace m_requisicion_formacion
                 {
                     var_acomodo = "No aplica";
                 }
-                else 
-                { 
-                    var_acomodo = dropListAcomodo.SelectedItem.Text.Trim(); 
+                else
+                {
+                    var_acomodo = dropListAcomodo.SelectedItem.Text.Trim();
                 }
-                
+
             }
             if (dropListLugar.SelectedValue == "3")
             {
@@ -186,47 +186,17 @@ namespace m_requisicion_formacion
                 var_sala = "No aplica";
                 var_acomodo = "No aplica";
             }
-            //Seleccionar el tipo de query a ejecutar.
-            string queryInsert;
-            if (dropListLugar.SelectedValue == "1") 
-            {
-                queryInsert = "INSERTAR_REQUI_INTERNA_OFICINAS"; 
-            } 
-            else 
-            {
-                queryInsert = "INSERTAR_REQUI_INTERNA"; 
-            }
+
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PRUEBAS"].ToString());
+            int id_requi;
+            string queryInsert = "INSERTAR_REQUI_INTERNA";
+            Consultas consultas1 = new Consultas();
             try
             {
-                conn.Open();
                 SqlCommand cmd = new SqlCommand(queryInsert, conn);
-                cmd.Connection = conn;
+                conn.Open();
                 cmd.CommandType = CommandType.StoredProcedure;
-                if (dropListLugar.SelectedValue == "1")
-                {
-                    //Datos de la tabla estado oficinas.
-                    cmd.Parameters.AddWithValue("@ALAMO", CheckBox1.Checked);
-                    cmd.Parameters.AddWithValue("@APIZACO", CheckBox2.Checked);
-                    cmd.Parameters.AddWithValue("@CATEMACO", CheckBox3.Checked);
-                    cmd.Parameters.AddWithValue("@COATZACOALCOS", CheckBox4.Checked);
-                    cmd.Parameters.AddWithValue("@CORDOBA", CheckBox5.Checked);
-                    cmd.Parameters.AddWithValue("@FORTIN", CheckBox6.Checked);
-                    cmd.Parameters.AddWithValue("@HUAMANTLA", CheckBox7.Checked);
-                    cmd.Parameters.AddWithValue("@JUAN_PABLO", CheckBox8.Checked);
-                    cmd.Parameters.AddWithValue("@MARTINEZ", CheckBox9.Checked);
-                    cmd.Parameters.AddWithValue("@ORIZABA", CheckBox10.Checked);
-                    cmd.Parameters.AddWithValue("@POZA_RICA", CheckBox11.Checked);
-                    cmd.Parameters.AddWithValue("@PUEBLA_SUR", CheckBox12.Checked);
-                    cmd.Parameters.AddWithValue("@TEJERIA", CheckBox13.Checked);
-                    cmd.Parameters.AddWithValue("@TEZIUTLAN", CheckBox14.Checked);
-                    cmd.Parameters.AddWithValue("@TLAXCALA", CheckBox15.Checked);
-                    cmd.Parameters.AddWithValue("@TUXPAN", CheckBox16.Checked);
-                    cmd.Parameters.AddWithValue("@VERACRUZ", CheckBox17.Checked);
-                    cmd.Parameters.AddWithValue("@XALAPA", CheckBox18.Checked);
-                    cmd.Parameters.AddWithValue("@ZACATELCO", CheckBox19.Checked);
-                }
-                //Datos de la tabla Requi Interna
+
                 cmd.Parameters.AddWithValue("@PRIORIDAD", dropListPrioridad.SelectedItem.Text.Trim());
                 cmd.Parameters.AddWithValue("@MODALIDAD", dropListModalidad.SelectedItem.Text.Trim());
                 cmd.Parameters.AddWithValue("@TEMA", txtTema.Text.Trim());
@@ -244,6 +214,35 @@ namespace m_requisicion_formacion
                 cmd.Parameters.AddWithValue("@EVALUACION", rblEvaluacion.SelectedItem.Text.Trim());
                 cmd.ExecuteNonQuery();
                 conn.Close();
+                if (dropListLugar.SelectedValue == "1")
+                {
+                    SqlCommand cmd2 = new SqlCommand("select IDENT_CURRENT ('requi_interna')", conn);
+                    cmd2.Connection = conn;
+                    conn.Open();
+                    id_requi = Convert.ToInt32(cmd2.ExecuteScalar());
+                    //Insertar si casilla marcada individualmente.
+                    if (CheckAlamo.Checked) { consultas1.insertar1(id_requi, 15); }
+                    if (CheckApizaco.Checked) { consultas1.insertar1(id_requi, 11); }
+                    if (CheckCatemaco.Checked) { consultas1.insertar1(id_requi, 18); }
+                    if (CheckCoatza.Checked) { consultas1.insertar1(id_requi, 28); }
+                    if (CheckCordoba.Checked) { consultas1.insertar1(id_requi, 4); }
+                    if (CheckFortin.Checked) { consultas1.insertar1(id_requi, 16); }
+                    if (CheckHuamantla.Checked) { consultas1.insertar1(id_requi, 20); }
+                    if (CheckJuanPablo.Checked) { consultas1.insertar1(id_requi, 27); }
+                    if (CheckMartinez.Checked) { consultas1.insertar1(id_requi, 13); }
+                    if (CheckOrizaba.Checked) { consultas1.insertar1(id_requi, 7); }
+                    if (CheckPoza.Checked) { consultas1.insertar1(id_requi, 5); }
+                    if (CheckPueblaSur.Checked) { consultas1.insertar1(id_requi, 22); }
+                    if (CheckTejeria.Checked) { consultas1.insertar1(id_requi, 17); }
+                    if (CheckTeziutlan.Checked) { consultas1.insertar1(id_requi, 12); }
+                    if (CheckTlaxcala.Checked) { consultas1.insertar1(id_requi, 10); }
+                    if (CheckTuxpan.Checked) { consultas1.insertar1(id_requi, 6); }
+                    if (CheckVeracruz.Checked) { consultas1.insertar1(id_requi, 9); }
+                    if (CheckXalapa.Checked) { consultas1.insertar1(id_requi, 8); }
+                    if (CheckZacatelco.Checked) { consultas1.insertar1(id_requi, 21); }
+                    conn.Close();
+                }
+
             }
             catch (Exception ex)
             {
@@ -252,30 +251,20 @@ namespace m_requisicion_formacion
         }
 
         protected void enviarSolicitud_Click(object sender, EventArgs e)
-        {   
+        {
             try
             {
                 InsertarDatos();
                 GuardarAdjunto();
                 EnviarCorreo();
-                Response.Redirect("/Exito.aspx");
+                ClientScript.RegisterStartupScript(this.GetType(), "showMsj", "alerta()", true); 
+               
             }
             catch (Exception ex)
             {
-                
+
                 throw ex;
             }
         }
-
-        protected void LinkButton1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void LinkButton2_Click(object sender, EventArgs e)
-        {
-
-        }
-
     }
 }

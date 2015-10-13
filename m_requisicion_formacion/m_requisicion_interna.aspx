@@ -11,45 +11,40 @@
     <link href="CSS/intranet_estilo.css" rel="stylesheet" />
     <link href="CSS/estilo_calendario.css" rel="stylesheet" />
     <script src="Scripts/jquery-1.10.2.js"></script>
-</head>
-<body>
+
     <script type="text/javascript">
-        function EnableDisable(rbl) {
-            var rb = rbl.getElementsByTagName("input");
-            document.getElementById("<%=fileUploadPoliticas.ClientID %>").disabled = true;
-            for (var i = 0; i < rb.length; i++) {
-                if (rb[i].value == 1 && rb[i].checked) {
-                    document.getElementById("<%=fileUploadPoliticas.ClientID %>").disabled = false;
-                }
-            }
+        function alerta() {
+            alert('Solicitud realizada correctamente!');
+            window.location = "/m_requisicion_interna.aspx"
         }
-        function EnableDisable2(rbl) {
-            var rb = rbl.getElementsByTagName("input");
-            document.getElementById("<%=fileUploadEvaluacion.ClientID %>").disabled = true;
-            for (var i = 0; i < rb.length; i++) {
-                if (rb[i].value == 1 && rb[i].checked) {
-                    document.getElementById("<%=fileUploadEvaluacion.ClientID %>").disabled = false;
-                }
-            }
-        }
-
-        function toggleCheckBoxes(elem) {
-
-            var div = document.getElementById('<% = divOficinas.ClientID %>');
-
-            var chk = div.getElementsByTagName('input');
-            var len = chk.length;
-
-            for (var i = 0; i < len; i++) {
-                if (chk[i].type === 'checkbox') {
-                    chk[i].checked = elem.checked;
-                }
-            }
-        }
-
-
     </script>
 
+
+    <style type="text/css">
+        .auto-style3 {
+            width: 162px;
+        }
+
+        .auto-style7 {
+            width: 375px;
+        }
+
+        .auto-style8 {
+            width: 374px;
+        }
+
+        .auto-style9 {
+            width: 375px;
+            height: 36px;
+        }
+
+        .auto-style10 {
+            height: 36px;
+        }
+    </style>
+
+</head>
+<body>
     <div id="encabezado">
         <div id="logo"></div>
         <div id="relleno"></div>
@@ -68,7 +63,7 @@
                             <div id="divDatosGenerales" runat="server">
                                 <table>
                                     <tr>
-                                        <td>Prioridad</td>
+                                        <td class="auto-style3">Prioridad</td>
                                         <td>
                                             <asp:DropDownList ID="dropListPrioridad" runat="server" CssClass="combobox" Width="201">
                                                 <asp:ListItem Text="-Seleccione Prioridad-" Value="0" Selected="True" />
@@ -78,10 +73,11 @@
                                             </asp:DropDownList>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" ControlToValidate="dropListPrioridad" InitialValue="0" Font-Bold="true" ForeColor="Red" />
                                             <br />
+                                            <br />
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>Modalidad</td>
+                                        <td class="auto-style3">Modalidad</td>
                                         <td>
                                             <asp:DropDownList ID="dropListModalidad" runat="server" AutoPostBack="true" CssClass="combobox" Width="201">
                                                 <asp:ListItem Text="-Seleccione modalidad-" Value="0" Selected="True" />
@@ -96,14 +92,14 @@
                             <div id="divDatosPresencial" runat="server">
                                 <table>
                                     <tr>
-                                        <td>Tema Capacitacion</td>
+                                        <td class="auto-style3">Tema Capacitacion</td>
                                         <td>
                                             <asp:TextBox ID="txtTema" runat="server" CssClass="texto" Width="195px" />
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage="*" ControlToValidate="txtTema" Font-Bold="true" ForeColor="Red"></asp:RequiredFieldValidator>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>Fecha</td>
+                                        <td class="auto-style3">Fecha</td>
                                         <td>
                                             <asp:TextBox runat="server" ID="fecha" ReadOnly="false" CssClass="texto" Width="100px" />
 
@@ -115,10 +111,10 @@
 
                                     </tr>
                                     <tr>
-                                        <td>Hora inicio</td>
+                                        <td class="auto-style3">Hora inicio</td>
                                         <td>
                                             <br />
-                                            <asp:DropDownList ID="horas" runat="server" Style="margin-left: 97px">
+                                            <asp:DropDownList ID="horas" runat="server" Style="margin-left: 82px">
                                                 <asp:ListItem Text="hh" Value="0" Selected="True" />
                                                 <asp:ListItem Text="01" />
                                                 <asp:ListItem Text="02" />
@@ -159,7 +155,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>Duración en Horas</td>
+                                        <td class="auto-style3">Duración en Horas</td>
                                         <td>
                                             <asp:TextBox ID="duracion_horas" runat="server" TextMode="Number" CssClass="texto" Width="50" min="1" />
                                             <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
@@ -171,7 +167,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>Número de Participantes</td>
+                                        <td class="auto-style3">Número de Participantes</td>
                                         <td>
                                             <asp:TextBox ID="numParticipantes" runat="server" TextMode="Number" CssClass="texto" Width="50" min="1" />
                                             <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server"
@@ -186,7 +182,7 @@
                             <div id="divLugar" runat="server">
                                 <table>
                                     <tr>
-                                        <td>Lugar</td>
+                                        <td class="auto-style3">Lugar</td>
                                         <td>
                                             <asp:DropDownList ID="dropListLugar" runat="server" AutoPostBack="true" CssClass="combobox" Width="201">
                                                 <asp:ListItem Text="-Seleccione Lugar-" Selected="True" Value="0" />
@@ -196,14 +192,13 @@
                                             </asp:DropDownList>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ErrorMessage="*" ControlToValidate="dropListLugar" InitialValue="0" Font-Bold="true" ForeColor="Red" />
                                         </td>
-
                                     </tr>
                                 </table>
                             </div>
                             <div id="divEspecificarOficina" runat="server">
                                 <table class="auto-style23">
                                     <tr>
-                                        <td>Especifiar Lugar</td>
+                                        <td class="auto-style3">Especifiar Lugar</td>
                                         <td>
                                             <asp:TextBox ID="textEspecificar" runat="server" CssClass="texto" Width="195" />
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ErrorMessage="*" ControlToValidate="textEspecificar" Font-Bold="true" ForeColor="Red" />
@@ -221,77 +216,76 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <asp:CheckBox ID="CheckBox1" runat="server" Text="Os Alamo" />
+                                            <asp:CheckBox ID="CheckAlamo" runat="server" Text="Os Alamo" />
                                         </td>
                                         <td>
-                                            <asp:CheckBox ID="CheckBox2" runat="server" Text="Os Apizaco" />
+                                            <asp:CheckBox ID="CheckApizaco" runat="server" Text="Os Apizaco" />
                                         </td>
                                         <td>
-                                            <asp:CheckBox ID="CheckBox3" runat="server" Text="Os Catemaco" />
+                                            <asp:CheckBox ID="CheckCatemaco" runat="server" Text="Os Catemaco" />
                                         </td>
                                         <td>
-                                            <asp:CheckBox ID="CheckBox4" runat="server" Text="Os Coatzacoalcos" />
+                                            <asp:CheckBox ID="CheckCoatza" runat="server" Text="Os Coatzacoalcos" />
                                         </td>
                                         <td>
-                                            <asp:CheckBox ID="CheckBox5" runat="server" Text="Os Cordoba" />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <asp:CheckBox ID="CheckBox6" runat="server" Text="Os Fortin" />
-                                        </td>
-                                        <td>
-                                            <asp:CheckBox ID="CheckBox7" runat="server" Text="Os Huamantla" />
-                                        </td>
-                                        <td>
-                                            <asp:CheckBox ID="CheckBox8" runat="server" Text="Os Juan Pablo" />
-                                        </td>
-                                        <td>
-                                            <asp:CheckBox ID="CheckBox9" runat="server" Text="Os Martinez" />
-                                        </td>
-                                        <td>
-                                            <asp:CheckBox ID="CheckBox10" runat="server" Text="Os Orizaba" />
+                                            <asp:CheckBox ID="CheckCordoba" runat="server" Text="Os Cordoba" />
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <asp:CheckBox ID="CheckBox11" runat="server" Text="Os Poza Rica" />
+                                            <asp:CheckBox ID="CheckFortin" runat="server" Text="Os Fortin" />
                                         </td>
                                         <td>
-                                            <asp:CheckBox ID="CheckBox12" runat="server" Text="Os Puebla Sur" />
+                                            <asp:CheckBox ID="CheckHuamantla" runat="server" Text="Os Huamantla" />
                                         </td>
                                         <td>
-                                            <asp:CheckBox ID="CheckBox13" runat="server" Text="Os Tejeria" />
+                                            <asp:CheckBox ID="CheckJuanPablo" runat="server" Text="Os Juan Pablo" />
                                         </td>
                                         <td>
-                                            <asp:CheckBox ID="CheckBox14" runat="server" Text="Os Teziutlan" />
+                                            <asp:CheckBox ID="CheckMartinez" runat="server" Text="Os Martinez" />
                                         </td>
                                         <td>
-                                            <asp:CheckBox ID="CheckBox15" runat="server" Text="Os Tlaxcala" />
+                                            <asp:CheckBox ID="CheckOrizaba" runat="server" Text="Os Orizaba" />
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <asp:CheckBox ID="CheckBox16" runat="server" Text="Os Tuxpan" />
+                                            <asp:CheckBox ID="CheckPoza" runat="server" Text="Os Poza Rica" />
                                         </td>
                                         <td>
-                                            <asp:CheckBox ID="CheckBox17" runat="server" Text="Os Veracruz" />
+                                            <asp:CheckBox ID="CheckPueblaSur" runat="server" Text="Os Puebla Sur" />
                                         </td>
                                         <td>
-                                            <asp:CheckBox ID="CheckBox18" runat="server" Text="Os Xalapa" />
+                                            <asp:CheckBox ID="CheckTejeria" runat="server" Text="Os Tejeria" />
                                         </td>
                                         <td>
-                                            <asp:CheckBox ID="CheckBox19" runat="server" Text="Os Zacatelco" />
+                                            <asp:CheckBox ID="CheckTeziutlan" runat="server" Text="Os Teziutlan" />
+                                        </td>
+                                        <td>
+                                            <asp:CheckBox ID="CheckTlaxcala" runat="server" Text="Os Tlaxcala" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <asp:CheckBox ID="CheckTuxpan" runat="server" Text="Os Tuxpan" />
+                                        </td>
+                                        <td>
+                                            <asp:CheckBox ID="CheckVeracruz" runat="server" Text="Os Veracruz" />
+                                        </td>
+                                        <td>
+                                            <asp:CheckBox ID="CheckXalapa" runat="server" Text="Os Xalapa" />
+                                        </td>
+                                        <td>
+                                            <asp:CheckBox ID="CheckZacatelco" runat="server" Text="Os Zacatelco" />
                                         </td>
 
                                     </tr>
                                 </table>
                             </div>
-                            <br />
                             <div id="divEspecificarSala" runat="server">
                                 <table>
                                     <tr>
-                                        <td>Especificar Sala</td>
+                                        <td class="auto-style3">Especificar Sala</td>
                                         <td>
                                             <asp:DropDownList ID="dropListSala" runat="server" AutoPostBack="True" CssClass="combobox" Width="201">
                                                 <asp:ListItem Text="-Selecione Sala-" Value="0" Selected="True" />
@@ -309,7 +303,7 @@
                                 <div id="divTipoAcomodo" runat="server">
                                     <table class="auto-style21">
                                         <tr>
-                                            <td>Tipo de Acomodo</td>
+                                            <td class="auto-style3">Tipo de Acomodo</td>
                                             <td>
                                                 <asp:DropDownList ID="dropListAcomodo" runat="server" CssClass="combobox" Width="201">
                                                     <asp:ListItem Text="-Seleccione Acomodo-" Value="0" Selected="True" />
@@ -330,13 +324,12 @@
                 </asp:UpdatePanel>
                 <br />
                 <br />
-
                 <fieldset>
                     <legend>Datos Específicos</legend>
                     <div id="divDatosEspcecificos">
                         <table>
                             <tr>
-                                <td>¿Existe procedimiento o política?</td>
+                                <td class="auto-style8">¿Existe procedimiento o política?</td>
                                 <td>
                                     <asp:RadioButtonList ID="rblPoliticas" runat="server" RepeatDirection="Horizontal" onclick="EnableDisable(this)">
                                         <asp:ListItem Text="Si" Value="1"></asp:ListItem>
@@ -345,9 +338,9 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>Adjuntar archivo</td>
+                                <td class="auto-style8">Adjuntar archivo</td>
                                 <td>
-                                    <asp:FileUpload ID="fileUploadPoliticas" runat="server" disabled="disabled" />
+                                    <asp:FileUpload ID="fileUploadPoliticas" runat="server" disabled="disabled" Width="285px" />
                                 </td>
                             </tr>
                         </table>
@@ -356,9 +349,9 @@
                                 <table>
 
                                     <tr>
-                                        <td>Participantes</td>
-                                        <td>
-                                            <asp:DropDownList runat="server" ID="dropListParticipantes" CssClass="listitem" AutoPostBack="true">
+                                        <td class="auto-style9">Participantes</td>
+                                        <td class="auto-style10">
+                                            <asp:DropDownList runat="server" ID="dropListParticipantes" CssClass="listitem" AutoPostBack="true" Height="22px" Width="197px">
                                                 <asp:ListItem Text="-Seleccione Participantes-" Value="0" Selected="True" />
                                                 <asp:ListItem Text="Comercial" Value="1" />
                                                 <asp:ListItem Text="Staff" Value="2" />
@@ -369,25 +362,27 @@
                                         </td>
                                     </tr>
                                     <tr id="trPersonalOficina" runat="server">
-                                        <td>Seleccione Personal</td>
+                                        <td class="auto-style7">Seleccione Personal</td>
                                         <td>
                                             <asp:DropDownList ID="dropPersonalComercial" runat="server">
+                                                <asp:ListItem Text="-Seleccione Personal-" />
                                                 <asp:ListItem Text="Toda la Oficina" />
                                                 <asp:ListItem Text="Solo Administrador" />
                                                 <asp:ListItem Text="Solo Gerente" />
-                                                <asp:ListItem Text="Solo Administraodr y Gerente" />
+                                                <asp:ListItem Text="Administrador y Gerente" />
                                             </asp:DropDownList>
                                         </td>
                                     </tr>
                                     <tr id="trStaff" runat="server">
-                                        <td>Indique areas del staff</td>
+                                        <td class="auto-style7">Indique areas del staff</td>
                                         <td>
                                             <asp:TextBox ID="txtAreasStaff" runat="server" TextMode="MultiLine" Height="50" Style="resize: none;" />
                                         </td>
 
                                     </tr>
                                     <tr>
-                                        <td>Especificar si se requiere material de apoyo o equipo especial. (Bocinas, Microfono, Etc...)</td>
+                                        <td class="auto-style7">Especificar si se requiere material de apoyo<br />
+                                            bocinas, camara web, etc...</td>
                                         <td>
                                             <asp:RadioButtonList ID="rblMaterial" runat="server" RepeatDirection="Horizontal" AutoPostBack="true">
                                                 <asp:ListItem Text="Si" Value="1" />
@@ -396,13 +391,13 @@
                                         </td>
                                     </tr>
                                     <tr id="trMaterialExtra" runat="server">
-                                        <td>Especifique Material</td>
+                                        <td class="auto-style7">Especifique Material</td>
                                         <td>
-                                            <asp:TextBox runat="server" TextMode="MultiLine" ID="txtMaterialExtral" Style="resize: none;" />
+                                            <asp:TextBox runat="server" TextMode="MultiLine" ID="txtMaterialExtral" Style="resize: none;" Width="197px" Height="50px" />
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>Coffe Break</td>
+                                        <td class="auto-style7">Coffe Break</td>
                                         <td>
                                             <asp:RadioButtonList ID="rblCoffe" runat="server" RepeatDirection="Horizontal">
                                                 <asp:ListItem Text="Si" />
@@ -416,7 +411,7 @@
                         </asp:UpdatePanel>
                         <table>
                             <tr>
-                                <td>¿Requiere evaluación?</td>
+                                <td class="auto-style7">¿Requiere evaluación?</td>
                                 <td>
                                     <asp:RadioButtonList ID="rblEvaluacion" runat="server" RepeatDirection="Horizontal" onclick="EnableDisable2(this)">
                                         <asp:ListItem Text="Si" Value="1"></asp:ListItem>
@@ -425,16 +420,14 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>Adjuntar archivo</td>
+                                <td class="auto-style7">Adjuntar archivo</td>
                                 <td>
-                                    <asp:FileUpload ID="fileUploadEvaluacion" runat="server" disabled="disabled" />
+                                    <asp:FileUpload ID="fileUploadEvaluacion" runat="server" disabled="disabled" Width="285px" />
                                 </td>
                             </tr>
                         </table>
                     </div>
                 </fieldset>
-
-
                 <br />
                 <br />
                 <div id="boton" runat="server">
@@ -443,12 +436,46 @@
                     <br />
                 </div>
             </div>
-
-
         </form>
     </div>
     <div id="pie">
         <img src="imagenes/inferior.png" width="1024" height="100" />
     </div>
+    <script type="text/javascript">
+        function EnableDisable(rbl) {
+            var rb = rbl.getElementsByTagName("input");
+            document.getElementById("<%=fileUploadPoliticas.ClientID %>").disabled = true;
+                for (var i = 0; i < rb.length; i++) {
+                    if (rb[i].value == 1 && rb[i].checked) {
+                        document.getElementById("<%=fileUploadPoliticas.ClientID %>").disabled = false;
+                }
+            }
+        }
+        function EnableDisable2(rbl) {
+            var rb = rbl.getElementsByTagName("input");
+            document.getElementById("<%=fileUploadEvaluacion.ClientID %>").disabled = true;
+            for (var i = 0; i < rb.length; i++) {
+                if (rb[i].value == 1 && rb[i].checked) {
+                    document.getElementById("<%=fileUploadEvaluacion.ClientID %>").disabled = false;
+                }
+            }
+        }
+
+        function toggleCheckBoxes(elem) {
+
+            var div = document.getElementById('<% = divOficinas.ClientID %>');
+
+            var chk = div.getElementsByTagName('input');
+            var len = chk.length;
+
+            for (var i = 0; i < len; i++) {
+                if (chk[i].type === 'checkbox') {
+                    chk[i].checked = elem.checked;
+                }
+            }
+        }
+
+
+    </script>
 </body>
 </html>
