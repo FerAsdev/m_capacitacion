@@ -14,7 +14,7 @@
 
     <script type="text/javascript">
         function alerta() {
-            alert('Solicitud realizada correctamente!');
+            alert('Solicitud realizada exitosamente!');
             window.location = "/m_requisicion_interna.aspx"
         }
     </script>

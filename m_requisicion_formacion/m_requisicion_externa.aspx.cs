@@ -58,7 +58,7 @@ namespace m_requisicion_formacion
 
         }
 
-        protected void enviarSolicitud_Click(object sender, EventArgs e)
+        protected void InsertarDatos()
         {
             string var_numParticipantes;
             string var_lugar;
@@ -100,22 +100,34 @@ namespace m_requisicion_formacion
                 cmd.Parameters.AddWithValue("@VIATICOS", rbViaticos.SelectedItem.Text.Trim());
                 cmd.Parameters.AddWithValue("@COSTO_APROX", txtCosto.Text.Trim());
                 cmd.ExecuteNonQuery();
-
-            }
-            catch (System.Data.SqlClient.SqlException ex)
-            {
-                string msg = "Fetch Error: ";
-                msg += ex.Message;
-                throw new Exception(msg);
-            }
-            finally
-            {
                 conn.Close();
-                EnviarCorreo();
-                Response.Redirect("Exito.aspx");
+              
             }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
 
         }
+
+        protected void enviarSolicitud_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                InsertarDatos();
+                EnviarCorreo();
+                ClientScript.RegisterStartupScript(this.GetType(), "showMsj", "alerta()", true); 
+            }
+            catch (Exception ex)
+            {
+                
+                throw ex;
+            }
+
+            
+        }  
 
     }
 }

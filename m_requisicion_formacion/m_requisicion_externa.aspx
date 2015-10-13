@@ -11,6 +11,12 @@
     <link href="CSS/intranet_estilo.css" rel="stylesheet" />
     <link href="CSS/estilo_calendario.css" rel="stylesheet" />
     <script src="Scripts/jquery-1.10.2.js"></script>
+    <script type="text/javascript">
+        function alerta() {
+            alert('Solicitud realizada exitosamente!');
+            window.location = "/m_requisicion_interna.aspx"
+        }
+    </script>
     <style type="text/css">
         .auto-style1 {
             width: 247px;
@@ -187,7 +193,7 @@
                                     <tr>
                                         <td class="auto-style1">Duracion en Horas</td>
                                         <td>
-                                            <asp:TextBox ID="duracion_horas" runat="server" TextMode="Number" Width="40px" min="1" max="24" CssClass="textotabla"/>
+                                            <asp:TextBox ID="duracion_horas" runat="server" TextMode="Number" Width="40px" min="1" max="24" CssClass="textotabla" />
                                             <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server"
                                                 ErrorMessage="*" ControlToValidate="duracion_horas"
                                                 ValidationExpression="^[1-9]+\d*$" ForeColor="Red" Font-Bold="true" />
@@ -202,7 +208,7 @@
                                     <tr>
                                         <td class="auto-style1">Numero de Participantes</td>
                                         <td>
-                                            <asp:TextBox ID="numParticipantes" runat="server" TextMode="Number" CssClass="textotabla" min="1" max="300" Width="40px"/>
+                                            <asp:TextBox ID="numParticipantes" runat="server" TextMode="Number" CssClass="textotabla" min="1" max="300" Width="40px" />
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="*"
                                                 ControlToValidate="numParticipantes" ForeColor="Red" Font-Bold="true" />
 
