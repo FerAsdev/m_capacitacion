@@ -40,6 +40,15 @@ namespace m_requisicion_formacion {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDatosGenerales;
         
         /// <summary>
+        /// Control RequiredFieldValidator9.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator9;
+        
+        /// <summary>
         /// Control dropListPrioridad.
         /// </summary>
         /// <remarks>
@@ -47,24 +56,6 @@ namespace m_requisicion_formacion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList dropListPrioridad;
-        
-        /// <summary>
-        /// Control RequiredFieldValidator8.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator8;
-        
-        /// <summary>
-        /// Control dropListModalidad.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dropListModalidad;
         
         /// <summary>
         /// Control RequiredFieldValidator7.
@@ -76,13 +67,13 @@ namespace m_requisicion_formacion {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator7;
         
         /// <summary>
-        /// Control txtTema.
+        /// Control dropListModalidad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTema;
+        protected global::System.Web.UI.WebControls.DropDownList dropListModalidad;
         
         /// <summary>
         /// Control RequiredFieldValidator11.
@@ -94,6 +85,15 @@ namespace m_requisicion_formacion {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator11;
         
         /// <summary>
+        /// Control txtTema.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTema;
+        
+        /// <summary>
         /// Control divDatosPresencial.
         /// </summary>
         /// <remarks>
@@ -101,6 +101,15 @@ namespace m_requisicion_formacion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDatosPresencial;
+        
+        /// <summary>
+        /// Control RequiredFieldValidator1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
         
         /// <summary>
         /// Control fecha.
@@ -121,13 +130,13 @@ namespace m_requisicion_formacion {
         protected global::AjaxControlToolkit.CalendarExtender fecha_CalendarExtender;
         
         /// <summary>
-        /// Control RequiredFieldValidator1.
+        /// Control RequiredFieldValidator2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
         
         /// <summary>
         /// Control horas.
@@ -157,15 +166,6 @@ namespace m_requisicion_formacion {
         protected global::System.Web.UI.WebControls.DropDownList meridiano;
         
         /// <summary>
-        /// Control RequiredFieldValidator2.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
-        
-        /// <summary>
         /// Control UpdatePanel1.
         /// </summary>
         /// <remarks>
@@ -193,15 +193,6 @@ namespace m_requisicion_formacion {
         protected global::System.Web.UI.HtmlControls.HtmlTableRow trProveedor;
         
         /// <summary>
-        /// Control txtProveedor.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtProveedor;
-        
-        /// <summary>
         /// Control RequiredFieldValidator10.
         /// </summary>
         /// <remarks>
@@ -211,6 +202,15 @@ namespace m_requisicion_formacion {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator10;
         
         /// <summary>
+        /// Control txtProveedor.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtProveedor;
+        
+        /// <summary>
         /// Control rbViaticos.
         /// </summary>
         /// <remarks>
@@ -218,15 +218,6 @@ namespace m_requisicion_formacion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList rbViaticos;
-        
-        /// <summary>
-        /// Control txtCosto.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCosto;
         
         /// <summary>
         /// Control RegularExpressionValidator1.
@@ -247,6 +238,15 @@ namespace m_requisicion_formacion {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
         
         /// <summary>
+        /// Control txtCosto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCosto;
+        
+        /// <summary>
         /// Control divDuracionHoras.
         /// </summary>
         /// <remarks>
@@ -254,15 +254,6 @@ namespace m_requisicion_formacion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDuracionHoras;
-        
-        /// <summary>
-        /// Control duracion_horas.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox duracion_horas;
         
         /// <summary>
         /// Control RegularExpressionValidator2.
@@ -283,6 +274,15 @@ namespace m_requisicion_formacion {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator4;
         
         /// <summary>
+        /// Control duracion_horas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox duracion_horas;
+        
+        /// <summary>
         /// Control divNumPartic.
         /// </summary>
         /// <remarks>
@@ -290,15 +290,6 @@ namespace m_requisicion_formacion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divNumPartic;
-        
-        /// <summary>
-        /// Control numParticipantes.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox numParticipantes;
         
         /// <summary>
         /// Control RequiredFieldValidator5.
@@ -319,6 +310,15 @@ namespace m_requisicion_formacion {
         protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator3;
         
         /// <summary>
+        /// Control numParticipantes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox numParticipantes;
+        
+        /// <summary>
         /// Control divEspecificarLugar.
         /// </summary>
         /// <remarks>
@@ -328,15 +328,6 @@ namespace m_requisicion_formacion {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divEspecificarLugar;
         
         /// <summary>
-        /// Control textEspecificar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox textEspecificar;
-        
-        /// <summary>
         /// Control RequiredFieldValidator6.
         /// </summary>
         /// <remarks>
@@ -344,6 +335,15 @@ namespace m_requisicion_formacion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator6;
+        
+        /// <summary>
+        /// Control textEspecificar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox textEspecificar;
         
         /// <summary>
         /// Control EnviarSolicitud.

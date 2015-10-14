@@ -8,12 +8,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Requisición</title>
     <link href="CSS/intranet_estilo.css" rel="stylesheet" />
-        <script type="text/javascript">
-            function alerta() {
-                alert('La solicitud se a procesado con exito!');
-                window.location = "/m_requisicion_auditoria.aspx"
+    <script type="text/javascript">
+        function alerta() {
+            alert('La solicitud se a procesado con exito!');
+            window.location = "/m_requisicion_auditoria.aspx"
 
-            }
+        }
     </script>
 
 </head>
@@ -30,30 +30,29 @@
                 <div id="DivPrincipal">
                     <fieldset>
                         <legend>Datos de requisicion</legend>
-                        <table style="margin-left:14.438px">
-                            <tr>
-                                <td style="width:176px;"><strong>Mes de incidencia</strong></td>
-                                <td>
-                                    <asp:DropDownList runat="server" ID="DropListMeses" CssClass="combobox">
-                                        <asp:ListItem Text="-Seleccione Mes-" Value="0" Selected="True" />
-                                        <asp:ListItem Text="Enero" />
-                                        <asp:ListItem Text="Febrero" />
-                                        <asp:ListItem Text="Marzo" />
-                                        <asp:ListItem Text="Abril" />
-                                        <asp:ListItem Text="Mayo" />
-                                        <asp:ListItem Text="Junio" />
-                                        <asp:ListItem Text="Julio" />
-                                        <asp:ListItem Text="Agosto" />
-                                        <asp:ListItem Text="Septiembre" />
-                                        <asp:ListItem Text="Octubre" />
-                                        <asp:ListItem Text="Noviembre" />
-                                        <asp:ListItem Text="Diciembre" />
-                                    </asp:DropDownList>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" ControlToValidate="DropListMeses" ForeColor="Red" Font-Bold="true" InitialValue="0" />
-                                </td>
-                            </tr>
-                        </table>
-                        <div id="DivOficinas" runat="server" style="margin-left:2%" >
+                        <br />
+
+                        <div style="margin-left: 2%">
+                            <strong>Mes de incidencia</strong>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" ControlToValidate="DropListMeses" ForeColor="Red" Font-Bold="true" InitialValue="0" />
+
+                            <asp:DropDownList runat="server" ID="DropListMeses" CssClass="combobox" Style="margin-left: 130px">
+                                <asp:ListItem Text="-Seleccione Mes-" Value="0" Selected="True" />
+                                <asp:ListItem Text="Enero" />
+                                <asp:ListItem Text="Febrero" />
+                                <asp:ListItem Text="Marzo" />
+                                <asp:ListItem Text="Abril" />
+                                <asp:ListItem Text="Mayo" />
+                                <asp:ListItem Text="Junio" />
+                                <asp:ListItem Text="Julio" />
+                                <asp:ListItem Text="Agosto" />
+                                <asp:ListItem Text="Septiembre" />
+                                <asp:ListItem Text="Octubre" />
+                                <asp:ListItem Text="Noviembre" />
+                                <asp:ListItem Text="Diciembre" />
+                            </asp:DropDownList>
+                        </div>
+                        <div id="DivOficinas" runat="server" style="margin-left: 2%">
                             <h3>Oficinas de Servicio</h3>
                             <table>
                                 <tr>
@@ -129,34 +128,38 @@
                                 </tr>
                             </table>
                         </div>
-                        <div id="DivInsidencias" style="margin-left:2%">
-                            <h3>Insidencias Mensuales</h3>                           
-                               <strong>Descripcion de incidencia:</strong>
+                        <div id="DivInsidencias" style="margin-left: 2%">
+                            <h3>Insidencias Mensuales</h3>
+                            <strong>Descripcion de incidencia:</strong>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
+                                ErrorMessage="*" ControlToValidate="TextDescripcion"
+                                ForeColor="Red" Font-Bold="true" />
                             <br />
-                            <asp:TextBox ID="TextDescripcion" runat="server" 
-                            TextMode="MultiLine" Rows="3" 
-                            style="resize:none;" 
-                            Width="690px" Height="67px"/>                   
+                            <asp:TextBox ID="TextDescripcion" runat="server"
+                                TextMode="MultiLine" Rows="3"
+                                Style="resize: none;"
+                                Width="690px" Height="67px" CssClass="texto" />
+
                             <br />
                             <br />
                             <strong>Adjuntar archivo</strong>
                             <br />
                             <asp:FileUpload ID="FileReprote" runat="server" Width="300px" />
                             <asp:RegularExpressionValidator
-                            ID="RegularExpressionValidator1"
-                            runat="server" ForeColor="Red"
-                            ErrorMessage="Archivo no permitido"
-                            ValidationExpression="^.+(.xls|.XLS|.xlsx|.XLSX)$"
-                            ControlToValidate="FileReprote" Font-Bold="true" />                    
+                                ID="RegularExpressionValidator1"
+                                runat="server" ForeColor="Red"
+                                ErrorMessage="Archivo no permitido"
+                                ValidationExpression="^.+(.xls|.XLS|.xlsx|.XLSX)$"
+                                ControlToValidate="FileReprote" Font-Bold="true" />
                             <br />
-                            <br />                    
+                            <br />
                         </div>
-                    </fieldset>      
+                    </fieldset>
                 </div>
-                 <br />
-                 <asp:Button ID="Button1" Text="Enviar Solicitud" runat="server" 
-                     CssClass="botonformulario" OnClick="EnviarSolicitud" 
-                     Style="margin-left: 300px" />
+                <br />
+                <asp:Button ID="Button1" Text="Enviar Solicitud" runat="server"
+                    CssClass="botonformulario" OnClick="EnviarSolicitud"
+                    Style="margin-left: 300px" />
                 <br />
                 <br />
             </div>
@@ -165,10 +168,10 @@
     <div id="pie">
         <img src="imagenes/inferior.png" width="1024" height="100" />
     </div>
-        <script>
-            function toggleCheckBoxes(elem) {
+    <script>
+        function toggleCheckBoxes(elem) {
 
-                var div = document.getElementById('<% = DivOficinas.ClientID %>');
+            var div = document.getElementById('<% = DivOficinas.ClientID %>');
 
             var chk = div.getElementsByTagName('input');
             var len = chk.length;
@@ -178,7 +181,7 @@
                     chk[i].checked = elem.checked;
                 }
             }
-            }
+        }
 
     </script>
 </body>
