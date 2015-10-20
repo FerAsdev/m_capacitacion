@@ -8,9 +8,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Requisición</title>
     <link href="CSS/intranet_estilo.css" rel="stylesheet" />
+    <script src="Scripts/jquery-1.11.3.min.js"></script>
     <script type="text/javascript">
         function alerta() {
-            alert('La solicitud se a procesado con exito!');
+            alert('¡La solicitud se ha enviado con éxito!');
             window.location = "/m_requisicion_auditoria.aspx"
 
         }
@@ -24,9 +25,11 @@
     </div>
     <div id="contenedor">
         <form id="form1" runat="server">
+            <asp:ScriptManager ID="ScriptManager1" runat="server" />
             <div id="menu" style="width: 250px; height: 370px;"></div>
             <div id="modulo">
-                <h1>Requisicion de auditoria</h1>
+                <h1>Solicitud de capacitación</h1>
+                <h3>Requisición de capacitación auditoria.</h3>
                 <div id="DivPrincipal">
                     <fieldset>
                         <legend>Datos de requisicion</legend>
@@ -139,21 +142,32 @@
                                 TextMode="MultiLine" Rows="3"
                                 Style="resize: none;"
                                 Width="690px" Height="67px" CssClass="texto" />
-
-                            <br />
-                            <br />
-                            <strong>Adjuntar archivo</strong>
-                            <br />
-                            <asp:FileUpload ID="FileReprote" runat="server" Width="300px" />
-                            <asp:RegularExpressionValidator
-                                ID="RegularExpressionValidator1"
-                                runat="server" ForeColor="Red"
-                                ErrorMessage="Archivo no permitido"
-                                ValidationExpression="^.+(.xls|.XLS|.xlsx|.XLSX)$"
-                                ControlToValidate="FileReprote" Font-Bold="true" />
-                            <br />
-                            <br />
                         </div>
+                        <div id="divAdjuntar" runat="server" style="margin-left: 2%">
+                            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                <Triggers>
+                                    <asp:PostBackTrigger ControlID="BtnAdd" />
+                                </Triggers>
+                                <ContentTemplate>
+                                    <br />
+                                    <strong>Adjuntar archivo
+                                    <br />
+                                    (Solo se permiten archivos de Excel y PowerPoint)</strong><br />
+                                    <asp:FileUpload ID="FileReprote" runat="server" Width="300px" />
+                                    <asp:RegularExpressionValidator
+                                        ID="RegularExpressionValidator1"
+                                        runat="server" ForeColor="Red"
+                                        ErrorMessage="Archivo no permitido"
+                                        ValidationExpression="^.+(.xls|.XLS|.xlsx|.XLSX|.ppt|.PPT|.pptx|.PPTX)$"
+                                        ControlToValidate="FileReprote" Font-Bold="true" /><br />
+                                    <asp:ListBox ID="ListFile" runat="server" Width="300px" CssClass="listitem" /><br />
+                                    <asp:Button ID="BtnAdd" runat="server" Text="Agregar" OnClick="AgregarFile" CausesValidation="false" />
+                                    <asp:Button ID="BtnQuit" runat="server" Text="Quitar" Style="margin-left: 15px" Width="67px" OnClick="QuitarFile" CausesValidation="false" />
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </div>
+                        <br />
+                        <br />
                     </fieldset>
                 </div>
                 <br />
@@ -172,17 +186,30 @@
         function toggleCheckBoxes(elem) {
 
             var div = document.getElementById('<% = DivOficinas.ClientID %>');
-
             var chk = div.getElementsByTagName('input');
             var len = chk.length;
-
             for (var i = 0; i < len; i++) {
                 if (chk[i].type === 'checkbox') {
                     chk[i].checked = elem.checked;
                 }
             }
         }
+    </script>
+    <script>
 
+        $('#form1').on('submit', function (e) {
+            if ($("input[type=checkbox]:checked").length === 0) {
+                e.preventDefault();
+                alert('Seleccione al menos una oficina.');
+                return false;
+            }
+        });
+    </script>
+    <script type="text/javascript">
+        function DisableButton() {
+            document.getElementById("<%=Button1.ClientID %>").disabled = true;
+        }
+        window.onbeforeunload = DisableButton;
     </script>
 </body>
 </html>

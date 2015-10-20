@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Tipo Capacitación</title>
+    <title>Tipo Requisición</title>
     <link href="CSS/intranet_estilo.css" rel="stylesheet" />
 </head>
 <body>
@@ -21,7 +21,7 @@
                 <h1>Requisición de capacitación.</h1>
 
                 <asp:DropDownList ID="tipoRequisicion" runat="server" CssClass="combobox">
-                    <asp:ListItem Text="-Seleccione Tipo de Requisicion-" />
+                    <asp:ListItem Text="-Seleccione Tipo de Requisición-" />
                     <asp:ListItem Text="Interna" />
                     <asp:ListItem Text="Externa" />
                     <asp:listitem text="Auditoria" />

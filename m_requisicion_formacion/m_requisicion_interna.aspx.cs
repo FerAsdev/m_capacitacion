@@ -9,6 +9,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Net.Mail;
 using System.IO;
+using System.Text;
 
 namespace m_requisicion_formacion
 {
@@ -16,7 +17,7 @@ namespace m_requisicion_formacion
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+           
             divDatosPresencial.Visible = false;
             divEspecificarOficina.Visible = false;
             divEspecificarSala.Visible = false;
@@ -61,6 +62,9 @@ namespace m_requisicion_formacion
             if (dropListParticipantes.SelectedValue == "2") { trStaff.Visible = true; }
             if (rblMaterial.SelectedValue == "1") { trMaterialExtra.Visible = true; }
 
+
+
+
         }
 
         protected void GuardarAdjunto()
@@ -103,25 +107,31 @@ namespace m_requisicion_formacion
 
         protected void EnviarCorreo()
         {
+            Consultas consulta = new Consultas();
+            string folio = consulta.ConsultaFolio(1);
+            string usuario = "Fernando";
+            string tipo = "Interna";
+
+            StringBuilder emailHtml = new StringBuilder(File.ReadAllText(Server.MapPath("~/plantilla/plantillaCorreo.html")));
+            emailHtml.Replace("{tipo}", tipo);
+            emailHtml.Replace("{folio}", folio);
+            emailHtml.Replace("{usuario}", usuario);
+
             Correos Cr = new Correos();
             MailMessage mnsj = new MailMessage();
             string file1 = Server.MapPath("~/Data/") + Path.GetFileName(fileUploadPoliticas.FileName);
             string file2 = Server.MapPath("~/Data/") + Path.GetFileName(fileUploadEvaluacion.FileName);
             try
             {
-                mnsj.Subject = "Nueva requisición de capacitación";
+                mnsj.Subject = "Solicitud de capacitación";
                 mnsj.To.Add(new MailAddress("fernando.aguilar@si-microcreditos.com"));
-                mnsj.From = new MailAddress("robot@si-microcreditos.com", "Requisicion Capacitacion");
-                mnsj.Body = "Se a recibido una nueva requisición de capacitación en la intranet de tipo Interna";
+                mnsj.From = new MailAddress("robot@si-microcreditos.com", "Formación");
+                mnsj.Body = emailHtml.ToString();
+                mnsj.IsBodyHtml = true;
                 /* Si deseamos Adjuntar algún archivo*/
-                if (File.Exists(file1))
-                {
-                    mnsj.Body = "Se recibio uno o varios archivos adjuntos.";
-                    mnsj.Attachments.Add(new Attachment(file1));
-
-                }
+                if (File.Exists(file1)) {mnsj.Attachments.Add(new Attachment(file1)); }
                 if (File.Exists(file2)) { mnsj.Attachments.Add(new Attachment(file2)); }
-                /* Enviar */
+
                 Cr.MandarCorreo(mnsj);
                 mnsj.Dispose();
             }
@@ -187,36 +197,39 @@ namespace m_requisicion_formacion
                 var_acomodo = "No aplica";
             }
 
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PRUEBAS"].ToString());
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConexionBD"].ToString());
             int id_requi;
-            string queryInsert = "INSERTAR_REQUI_INTERNA";
+            string sp_insert = "INSERTAR_CAPACITACION_INTERNA";
             Consultas consultas1 = new Consultas();
             try
             {
-                SqlCommand cmd = new SqlCommand(queryInsert, conn);
+                SqlCommand cmd = new SqlCommand(sp_insert, conn);
                 conn.Open();
                 cmd.CommandType = CommandType.StoredProcedure;
-
-                cmd.Parameters.AddWithValue("@PRIORIDAD", dropListPrioridad.SelectedItem.Text.Trim());
-                cmd.Parameters.AddWithValue("@MODALIDAD", dropListModalidad.SelectedItem.Text.Trim());
-                cmd.Parameters.AddWithValue("@TEMA", txtTema.Text.Trim());
-                cmd.Parameters.AddWithValue("@FECHA", fecha.Text.Trim());
-                cmd.Parameters.AddWithValue("@HORA_INICIO", var_hora_inicio);
-                cmd.Parameters.AddWithValue("@DURACION", duracion_horas.Text.Trim());
-                cmd.Parameters.AddWithValue("@NUMERO_PARTICIPANTES", numParticipantes.Text.Trim());
-                cmd.Parameters.AddWithValue("@LUGAR", var_lugar);
-                cmd.Parameters.AddWithValue("@SALA", var_sala);
-                cmd.Parameters.AddWithValue("@ACOMODO", var_acomodo);
-                cmd.Parameters.AddWithValue("@POLITICAS", rblPoliticas.SelectedItem.Text.Trim());
-                cmd.Parameters.AddWithValue("@PARTICIPANTES", var_personal);
-                cmd.Parameters.AddWithValue("@MATERIAL", var_materialExtra);
-                cmd.Parameters.AddWithValue("@COFFE", rblCoffe.SelectedItem.Text.Trim());
-                cmd.Parameters.AddWithValue("@EVALUACION", rblEvaluacion.SelectedItem.Text.Trim());
+                cmd.Parameters.AddWithValue("@prioridad", dropListPrioridad.SelectedItem.Text.Trim());
+                cmd.Parameters.AddWithValue("@modalidad", dropListModalidad.SelectedItem.Text.Trim());
+                cmd.Parameters.AddWithValue("@nombre", txtTema.Text.Trim());
+                cmd.Parameters.AddWithValue("@fecha_inicio", fecha.Text.Trim());
+                cmd.Parameters.AddWithValue("@hora_inicio", var_hora_inicio);                  
+                //Solicitante variable que se obtendra del cookie.
+                cmd.Parameters.AddWithValue("@solicitante", "Fernando");
+                
+                //Datos especificos (Tabla solicitud_interna)
+                cmd.Parameters.AddWithValue("@duracion_horas", Convert.ToInt32(duracion_horas.Text.Trim()));
+                cmd.Parameters.AddWithValue("@numero_participantes",Convert.ToInt32(numParticipantes.Text.Trim()));
+                cmd.Parameters.AddWithValue("@lugar", var_lugar);
+                cmd.Parameters.AddWithValue("@sala", var_sala);
+                cmd.Parameters.AddWithValue("@acomodo", var_acomodo);
+                cmd.Parameters.AddWithValue("@politicas", rblPoliticas.SelectedItem.Text.Trim());
+                cmd.Parameters.AddWithValue("@participantes", var_personal);
+                cmd.Parameters.AddWithValue("@material_extra", var_materialExtra);
+                cmd.Parameters.AddWithValue("@coffe_break", rblCoffe.SelectedItem.Text.Trim());
+                cmd.Parameters.AddWithValue("@evaluacion", rblEvaluacion.SelectedItem.Text.Trim());
                 cmd.ExecuteNonQuery();
                 conn.Close();
                 if (dropListLugar.SelectedValue == "1")
                 {
-                    SqlCommand cmd2 = new SqlCommand("select IDENT_CURRENT ('requi_interna')", conn);
+                    SqlCommand cmd2 = new SqlCommand("select IDENT_CURRENT ('capacitacion_interna')", conn);
                     cmd2.Connection = conn;
                     conn.Open();
                     id_requi = Convert.ToInt32(cmd2.ExecuteScalar());
@@ -250,17 +263,57 @@ namespace m_requisicion_formacion
             }
         }
 
+        protected void AgregarFile(object sender, EventArgs e)
+        {
+            //crear un archivo de tipo Fileupload desde el control del formulario
+            FileUpload f = fileUploadPoliticas;
+            //Si ino hay nada no se hace nada.
+            if (!f.HasFile)
+                return;
+            //Crear un objeto tipo "Lista de objetos"
+            ListItem item = new ListItem();
+            //Asignamos los valores al objeto de la lista desde las propiedades del fichero
+            //obtenido del fileupload
+            item.Value = f.FileName;
+            item.Text = f.FileName;
+            //Guardamos el archivo en el servidor (de manera temporal)
+            f.SaveAs(Server.MapPath("~/Data/" + item.Value));
+            //Agregamos el archivo al ListBox en el formulario.
+            ListFile.Items.Add(item);
+
+        }
+
+        protected void QuitarFile(object sender, EventArgs e)
+        {
+            ListBox lb = ListFile;
+            //Comprobar que se selecciono algun elemento de la lista.
+            if (lb.SelectedItem == null)
+                return;
+            BorrarArchivo(lb.SelectedItem.Value);
+
+        }
+
+        protected void BorrarArchivo(string fileName)
+        {
+            string fichero = Server.MapPath("~/Data/" + fileName);
+            File.Delete(fichero);
+
+            ListItem l = ListFile.Items.FindByValue(fileName);
+            if (l != null)
+            {
+                ListFile.Items.Remove(l);
+            }
+        }
+
         protected void enviarSolicitud_Click(object sender, EventArgs e)
         {
             try
             {
-                EnviarSolicitud.Enabled = false;
                 InsertarDatos();
                 GuardarAdjunto();
-                EnviarCorreo();
-                
-                ClientScript.RegisterStartupScript(this.GetType(), "showMsj", "alerta()", true); 
-               
+               // EnviarCorreo();
+                ClientScript.RegisterStartupScript(this.GetType(), "showMsj", "alerta()", true);
+
             }
             catch (Exception ex)
             {

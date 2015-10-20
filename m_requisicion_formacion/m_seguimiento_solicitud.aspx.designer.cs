@@ -10,7 +10,16 @@
 namespace m_requisicion_formacion {
     
     
-    public partial class m_requisicion_auditoria {
+    public partial class m_seguimiento_solicitud {
+        
+        /// <summary>
+        /// Control Head1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlHead Head1;
         
         /// <summary>
         /// Control form1.
@@ -22,238 +31,211 @@ namespace m_requisicion_formacion {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// Control ScriptManager1.
+        /// Control ToolkitScriptManager1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        protected global::AjaxControlToolkit.ToolkitScriptManager ToolkitScriptManager1;
         
         /// <summary>
-        /// Control RequiredFieldValidator1.
+        /// Control busqueda.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl busqueda;
         
         /// <summary>
-        /// Control DropListMeses.
+        /// Control DropListBusqueda.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropListMeses;
+        protected global::System.Web.UI.WebControls.DropDownList DropListBusqueda;
         
         /// <summary>
-        /// Control DivOficinas.
+        /// Control fechaDesde.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivOficinas;
+        protected global::System.Web.UI.WebControls.TextBox fechaDesde;
         
         /// <summary>
-        /// Control CheckAlamo.
+        /// Control fechaDesde_CalendarExtender.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckAlamo;
+        protected global::AjaxControlToolkit.CalendarExtender fechaDesde_CalendarExtender;
         
         /// <summary>
-        /// Control CheckApizaco.
+        /// Control fechaHasta.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckApizaco;
+        protected global::System.Web.UI.WebControls.TextBox fechaHasta;
         
         /// <summary>
-        /// Control CheckCatemaco.
+        /// Control fechaHasta_CalendarExtender.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckCatemaco;
+        protected global::AjaxControlToolkit.CalendarExtender fechaHasta_CalendarExtender;
         
         /// <summary>
-        /// Control CheckCoatza.
+        /// Control btnBuscarInterna.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckCoatza;
+        protected global::System.Web.UI.WebControls.Button btnBuscarInterna;
         
         /// <summary>
-        /// Control CheckCordoba.
+        /// Control checkbox1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckCordoba;
+        protected global::System.Web.UI.WebControls.CheckBox checkbox1;
         
         /// <summary>
-        /// Control CheckFortin.
+        /// Control checkbox2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckFortin;
+        protected global::System.Web.UI.WebControls.CheckBox checkbox2;
         
         /// <summary>
-        /// Control CheckHuamantla.
+        /// Control checkbox3.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckHuamantla;
+        protected global::System.Web.UI.WebControls.CheckBox checkbox3;
         
         /// <summary>
-        /// Control CheckJuanPablo.
+        /// Control checkbox4.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckJuanPablo;
+        protected global::System.Web.UI.WebControls.CheckBox checkbox4;
         
         /// <summary>
-        /// Control CheckMartinez.
+        /// Control checkbox5.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckMartinez;
+        protected global::System.Web.UI.WebControls.CheckBox checkbox5;
         
         /// <summary>
-        /// Control CheckOrizaba.
+        /// Control checkbox6.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckOrizaba;
+        protected global::System.Web.UI.WebControls.CheckBox checkbox6;
         
         /// <summary>
-        /// Control CheckPoza.
+        /// Control checkbox7.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckPoza;
+        protected global::System.Web.UI.WebControls.CheckBox checkbox7;
         
         /// <summary>
-        /// Control CheckPueblaSur.
+        /// Control checkbox8.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckPueblaSur;
+        protected global::System.Web.UI.WebControls.CheckBox checkbox8;
         
         /// <summary>
-        /// Control CheckTejeria.
+        /// Control checkbox9.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckTejeria;
+        protected global::System.Web.UI.WebControls.CheckBox checkbox9;
         
         /// <summary>
-        /// Control CheckTeziutlan.
+        /// Control checkbox10.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckTeziutlan;
+        protected global::System.Web.UI.WebControls.CheckBox checkbox10;
         
         /// <summary>
-        /// Control CheckTlaxcala.
+        /// Control checkbox11.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckTlaxcala;
+        protected global::System.Web.UI.WebControls.CheckBox checkbox11;
         
         /// <summary>
-        /// Control CheckTuxpan.
+        /// Control checkbox12.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckTuxpan;
+        protected global::System.Web.UI.WebControls.CheckBox checkbox12;
         
         /// <summary>
-        /// Control CheckVeracruz.
+        /// Control checkbox13.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckVeracruz;
+        protected global::System.Web.UI.WebControls.CheckBox checkbox13;
         
         /// <summary>
-        /// Control CheckXalapa.
+        /// Control checkbox14.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckXalapa;
+        protected global::System.Web.UI.WebControls.CheckBox checkbox14;
         
         /// <summary>
-        /// Control CheckZacatelco.
+        /// Control checkbox15.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckZacatelco;
-        
-        /// <summary>
-        /// Control RequiredFieldValidator2.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
-        
-        /// <summary>
-        /// Control TextDescripcion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextDescripcion;
-        
-        /// <summary>
-        /// Control divAdjuntar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divAdjuntar;
+        protected global::System.Web.UI.WebControls.CheckBox checkbox15;
         
         /// <summary>
         /// Control UpdatePanel1.
@@ -265,57 +247,48 @@ namespace m_requisicion_formacion {
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
-        /// Control FileReprote.
+        /// Control Panel1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileReprote;
+        protected global::System.Web.UI.WebControls.Panel Panel1;
         
         /// <summary>
-        /// Control RegularExpressionValidator1.
+        /// Control GridView1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator1;
+        protected global::System.Web.UI.WebControls.GridView GridView1;
         
         /// <summary>
-        /// Control ListFile.
+        /// Control divInterna.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox ListFile;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divInterna;
         
         /// <summary>
-        /// Control BtnAdd.
+        /// Control divExterna.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnAdd;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divExterna;
         
         /// <summary>
-        /// Control BtnQuit.
+        /// Control divAuditoria.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnQuit;
-        
-        /// <summary>
-        /// Control Button1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divAuditoria;
     }
 }

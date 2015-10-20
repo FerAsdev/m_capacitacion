@@ -7,17 +7,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Requisición interna</title>
+    <title>Requisición Interna</title>
     <link href="CSS/intranet_estilo.css" rel="stylesheet" />
     <link href="CSS/estilo_calendario.css" rel="stylesheet" />
-    <script src="Scripts/jquery-1.10.2.js"></script>
-
+    <script src="Scripts/jquery-1.11.3.min.js"></script>
     <script type="text/javascript">
         function alerta() {
-            alert('Solicitud realizada exitosamente!');
+            alert('¡La solicitud se ha enviado con éxito!');
             window.location = "/m_requisicion_interna.aspx"
         }
     </script>
+
 
 
     <style type="text/css">
@@ -41,10 +41,6 @@
         .auto-style10 {
             height: 36px;
         }
-
-        .auto-style11 {
-            width: 163px;
-        }
     </style>
 
 </head>
@@ -57,7 +53,8 @@
         <form id="form1" runat="server" enctype="multipart/form-data" method="post">
             <div id="menu" style="width: 250px; height: 370px;"></div>
             <div id="modulo">
-                <h1>Requisición interna de capacitación</h1>
+                <h1>Solicitud de capacitación</h1>
+                <h3>Requisición de capacitación Interna</h3>
                 <ajaxToolkit:ToolkitScriptManager runat="Server" EnableScriptGlobalization="true"
                     EnableScriptLocalization="true" ID="ToolkitScriptManager1" CombineScripts="false" />
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
@@ -100,7 +97,9 @@
                             <div id="divDatosPresencial" runat="server">
                                 <table>
                                     <tr>
-                                        <td class="auto-style3">Tema Capacitacion
+                                        <td class="auto-style3">Nombre de
+                                            <br />
+                                            Capacitación
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage="*" ControlToValidate="txtTema" Font-Bold="true" ForeColor="Red"></asp:RequiredFieldValidator>
                                         </td>
                                         <td>
@@ -203,7 +202,7 @@
                             <div id="divEspecificarOficina" runat="server">
                                 <table class="auto-style23">
                                     <tr>
-                                        <td class="auto-style3">Especifiar Lugar
+                                        <td class="auto-style3">Lugar de Capacitación
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ErrorMessage="*" ControlToValidate="textEspecificar" Font-Bold="true" ForeColor="Red" />
                                         </td>
                                         <td>
@@ -329,26 +328,49 @@
                 </asp:UpdatePanel>
                 <br />
                 <br />
+
                 <fieldset>
                     <legend>Datos Específicos</legend>
+
                     <div id="divDatosEspcecificos">
-                        <table>
-                            <tr>
-                                <td class="auto-style8">¿Existe procedimiento o política?</td>
-                                <td>
-                                    <asp:RadioButtonList ID="rblPoliticas" runat="server" RepeatDirection="Horizontal" onclick="EnableDisable(this)">
-                                        <asp:ListItem Text="Si" Value="1"></asp:ListItem>
-                                        <asp:ListItem Text="No" Value="2" Selected="true"></asp:ListItem>
-                                    </asp:RadioButtonList>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="auto-style8">Adjuntar archivo</td>
-                                <td>
-                                    <asp:FileUpload ID="fileUploadPoliticas" runat="server" disabled="disabled" Width="285px" />
-                                </td>
-                            </tr>
-                        </table>
+                        <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+                            <Triggers>
+                                <asp:PostBackTrigger ControlID="BtnAdd" />
+                            </Triggers>
+                            <ContentTemplate>
+                                
+                                <table>
+                                    <tr>
+                                        <td class="auto-style8">¿Existe procedimiento o política?</td>
+                                        <td>
+                                            <asp:RadioButtonList ID="rblPoliticas" runat="server" RepeatDirection="Horizontal" onclick="EnableDisable(this)">
+                                                <asp:ListItem Text="Si" Value="1"></asp:ListItem>
+                                                <asp:ListItem Text="No" Value="2" Selected="true"></asp:ListItem>
+                                            </asp:RadioButtonList>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="auto-style8">Adjuntar documentos del evento<br />
+                                            (solo se permiten archivos PDF y PowerPoint)</td>
+                                        <td>
+                                            <asp:FileUpload ID="fileUploadPoliticas" runat="server" disabled="disabled" Width="285px" />
+                                            <br />
+                                            <asp:RegularExpressionValidator
+                                                ID="RegularExpressionValidator1"
+                                                runat="server" ForeColor="Red"
+                                                ErrorMessage="Archivo no permitido"
+                                                ValidationExpression="^.+(.ppt|.PPT|.pptx|.PPTX|.pdf|.PDF)$"
+                                                ControlToValidate="fileUploadPoliticas" Font-Bold="true" /><br />
+                                            <asp:ListBox ID="ListFile" runat="server" Width="215px" CssClass="listitem" Height="50px" /><br />
+                                            <asp:Button ID="BtnAdd" runat="server" Text="Agregar" OnClick="AgregarFile" CausesValidation="false" />
+                                            <asp:Button ID="BtnQuit" runat="server" Text="Quitar" Style="margin-left: 15px" Width="67px" OnClick="QuitarFile" CausesValidation="false" />
+
+                                        </td>
+                                    </tr>
+
+                                </table>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
                         <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                             <ContentTemplate>
                                 <table>
@@ -385,16 +407,23 @@
                                         </td>
                                     </tr>
                                     <tr id="trStaff" runat="server">
-                                        <td class="auto-style7">Indique areas del staff</td>
+                                        <td class="auto-style7">Indique areas del staff
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server"
+                                        ErrorMessage="*" ControlToValidate="txtAreasStaff"
+                                        ForeColor="Red" Font-Bold="true" />
+
+                                        </td>
+
                                         <td>
                                             <asp:TextBox ID="txtAreasStaff" runat="server"
-                                                TextMode="MultiLine" Height="50px" Style="resize: none;" CssClass="texto" Width="215px" />
+                                                TextMode="MultiLine" Height="50px" Style="resize: none;"
+                                                CssClass="texto" Width="215px" />
                                         </td>
 
                                     </tr>
                                     <tr>
                                         <td class="auto-style7">Especificar si se requiere material de apoyo<br />
-                                            bocinas, camara web, etc...</td>
+                                            especial (bocinas, camara web, etc...)</td>
                                         <td>
                                             <asp:RadioButtonList ID="rblMaterial" runat="server" RepeatDirection="Horizontal" AutoPostBack="true">
                                                 <asp:ListItem Text="Si" Value="1" />
@@ -403,7 +432,12 @@
                                         </td>
                                     </tr>
                                     <tr id="trMaterialExtra" runat="server">
-                                        <td class="auto-style7">Especifique Material</td>
+                                        <td class="auto-style7">Especifique Material
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server"
+                                            ErrorMessage="*" ControlToValidate="txtMaterialExtral"
+                                            ForeColor="Red" Font-Bold="true" />
+
+                                        </td>
                                         <td>
                                             <asp:TextBox runat="server" TextMode="MultiLine" CssClass="texto" ID="txtMaterialExtral" Style="resize: none;" Width="197px" Height="50px" />
                                         </td>
@@ -443,7 +477,8 @@
                 <br />
                 <br />
                 <div id="boton" runat="server">
-                    <asp:Button ID="EnviarSolicitud" runat="server" Text="Enviar Solicitud" CssClass="botonformulario" OnClick="enviarSolicitud_Click" Style="margin-left: 300px" />
+                    <asp:Button ID="EnviarSolicitud" runat="server" Text="Enviar Solicitud" CssClass="botonformulario"
+                        OnClick="enviarSolicitud_Click" Style="margin-left: 300px" />
                     <br />
                     <br />
                 </div>
@@ -460,12 +495,12 @@
             for (var i = 0; i < rb.length; i++) {
                 if (rb[i].value == 1 && rb[i].checked) {
                     document.getElementById("<%=fileUploadPoliticas.ClientID %>").disabled = false;
-                    }
                 }
             }
-            function EnableDisable2(rbl) {
-                var rb = rbl.getElementsByTagName("input");
-                document.getElementById("<%=fileUploadEvaluacion.ClientID %>").disabled = true;
+        }
+        function EnableDisable2(rbl) {
+            var rb = rbl.getElementsByTagName("input");
+            document.getElementById("<%=fileUploadEvaluacion.ClientID %>").disabled = true;
             for (var i = 0; i < rb.length; i++) {
                 if (rb[i].value == 1 && rb[i].checked) {
                     document.getElementById("<%=fileUploadEvaluacion.ClientID %>").disabled = false;
@@ -489,5 +524,25 @@
 
 
     </script>
+    <script>
+
+        $('#form1').on('submit', function (e) {
+            var div = document.getElementById('<% = divOficinas.ClientID %>');
+            if (div.style.display != "none") {
+                if ($("input[type=checkbox]:checked").length === 0) {
+                    e.preventDefault();
+                    alert('Seleccione al menos una oficina.');
+                    return false;
+                }
+            }
+        });
+    </script>
+    <script type="text/javascript">
+        function DisableButton() {
+            document.getElementById("<%=EnviarSolicitud.ClientID %>").disabled = true;
+        }
+        window.onbeforeunload = DisableButton;
+    </script>
+
 </body>
 </html>

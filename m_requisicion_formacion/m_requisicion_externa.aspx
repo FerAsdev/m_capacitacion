@@ -7,24 +7,24 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Requisicion Externa</title>
+    <title>Requisición Externa</title>
     <link href="CSS/intranet_estilo.css" rel="stylesheet" />
     <link href="CSS/estilo_calendario.css" rel="stylesheet" />
     <script src="Scripts/jquery-1.10.2.js"></script>
     <script type="text/javascript">
         function alerta() {
-            alert('Solicitud realizada exitosamente!');
-            window.location = "/m_requisicion_interna.aspx"
+            alert('¡La solicitud se ha enviado con éxito!');
+            window.location = "/m_tipo_requisicion.aspx"
         }
     </script>
 
     <style type="text/css">
-        .auto-style1 {
-            width: 161px;
-        }
-
         .auto-style3 {
             width: 162px;
+        }
+
+        .auto-style4 {
+            width: 96px;
         }
     </style>
 
@@ -39,7 +39,8 @@
         <form id="form1" runat="server">
             <div id="menu" style="width: 250px; height: 370px;"></div>
             <div id="modulo">
-                <h1>Requisición externa de capacitación</h1>
+                <h1>Solicitud de capacitación</h1>
+                <h3>Requisición de capacitación Externa.</h3>
                 <ajaxToolkit:ToolkitScriptManager runat="Server" EnableScriptGlobalization="true"
                     EnableScriptLocalization="true" ID="ToolkitScriptManager1" CombineScripts="false" />
 
@@ -79,8 +80,12 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td style="width: 162px">Tema
-                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ErrorMessage="*" ForeColor="Red" Font-Bold="true" ControlToValidate="txtTema" />
+                                <td style="width: 162px">Nombre de
+                                    <br />
+                                    Capacitación
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server"
+                                        ErrorMessage="*" ForeColor="Red"
+                                        Font-Bold="true" ControlToValidate="txtTema" />
 
                                 </td>
                                 <td>
@@ -93,22 +98,48 @@
                     <div id="divDatosPresencial" runat="server">
                         <table>
                             <tr>
-                                <td style="width: 162px">Fecha
-                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" ControlToValidate="fecha" ForeColor="Red" Font-Bold="true" />
+                                <td style="width: 162px">Fecha de Inicio
+                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
+                                         ErrorMessage="*" ControlToValidate="fecha"
+                                         ForeColor="Red" Font-Bold="true" />
 
+                                    <br />
+                                    <br />
+                                    <br />
                                 </td>
                                 <td>
-                                    <asp:TextBox runat="server" ID="fecha" ReadOnly="false" CssClass="texto" Width="100px" />
-                                    <ajaxToolkit:CalendarExtender ID="fecha_CalendarExtender" runat="server" TargetControlID="fecha" CssClass="calendario">
+                                    <asp:TextBox runat="server" ID="fecha" ReadOnly="false"
+                                        CssClass="texto" Width="100px" />
+                                    <ajaxToolkit:CalendarExtender ID="fecha_CalendarExtender" runat="server"
+                                        TargetControlID="fecha" CssClass="calendario">
                                     </ajaxToolkit:CalendarExtender>
                                     <br />
                                     <br />
+                                    <br />
+                                </td>
+                                <td class="auto-style4">Fecha Final
+                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server"
+                                         ErrorMessage="*" ControlToValidate="fecha"
+                                         ForeColor="Red" Font-Bold="true" />
+                                    <br />
+                                    <br />
+                                    <br />
+
+                                </td>
+                                <td>
+                                    <asp:TextBox runat="server" ID="fechaFinal" ReadOnly="false"
+                                        CssClass="texto" Width="100px" />
+                                    <br />
+                                    <br />
+                                    <ajaxToolkit:CalendarExtender ID="CalendarExtender1" runat="server"
+                                        TargetControlID="fechaFinal" CssClass="calendario">
+                                    </ajaxToolkit:CalendarExtender>
+                                    <br />
                                 </td>
                             </tr>
-                            <tr>
-                                <td>Hora inicio
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="*" InitialValue="0" ForeColor="Red" Font-Bold="true" ControlToValidate="horas" />
 
+                            <tr>
+                                <td>Hora de inicio
                                 </td>
                                 <td>
                                     <asp:DropDownList ID="horas" runat="server" CssClass="combobox">
@@ -149,6 +180,10 @@
                                         <asp:ListItem Text="pm" />
                                     </asp:DropDownList>
                                 </td>
+                                <td>
+                                    <asp:CheckBox Text="Por definir" runat="server"
+                                        AutoPostBack="true" ID="horascheck" />
+                                </td>
                             </tr>
                         </table>
                     </div>
@@ -166,7 +201,8 @@
 
                                     </td>
                                     <td>
-                                        <asp:RadioButtonList ID="rbProveedor" runat="server" RepeatDirection="Horizontal" AutoPostBack="true">
+                                        <asp:RadioButtonList ID="rbProveedor" runat="server"
+                                            RepeatDirection="Horizontal" AutoPostBack="true">
                                             <asp:ListItem Text="Si" Value="1" />
                                             <asp:ListItem Text="No" Value="2" Selected="True" />
                                         </asp:RadioButtonList>
@@ -186,7 +222,8 @@
                                 <tr>
                                     <td class="auto-style3">¿Se requieren viaticos?</td>
                                     <td>
-                                        <asp:RadioButtonList ID="rbViaticos" runat="server" RepeatDirection="Horizontal">
+                                        <asp:RadioButtonList ID="rbViaticos" runat="server"
+                                            RepeatDirection="Horizontal">
                                             <asp:ListItem Text="Si" Value="1" />
                                             <asp:ListItem Text="No" Value="2" Selected="True" />
                                         </asp:RadioButtonList>
@@ -194,34 +231,29 @@
                                 </tr>
                                 <tr>
                                     <td class="auto-style3">Costo aproximado
-                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
-                                        ErrorMessage="*"
-                                        ControlToValidate="txtCosto" ValidationExpression="^[$]+[1-9]+\d*$"
-                                        ForeColor="Red" Font-Bold="true" />
+
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"
                                             ErrorMessage="*" ControlToValidate="txtCosto"
                                             ForeColor="Red" Font-Bold="true" />
                                     </td>
                                     <td>
-                                        <asp:TextBox ID="txtCosto" runat="server" Width="100px" Text="$" />
+                                        <asp:TextBox ID="txtCosto" runat="server" Width="100px" Text="$000,000.00" CssClass="texto" />
 
                                     </td>
                                 </tr>
                             </table>
-
-
                             <div id="divDuracionHoras" runat="server">
                                 <table>
                                     <tr>
                                         <td class="auto-style3">Duracion en Horas
-                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server"
-                                            ErrorMessage="*" ControlToValidate="duracion_horas"
-                                            ValidationExpression="^[1-9]+\d*$" ForeColor="Red" Font-Bold="true" />
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="*" ControlToValidate="duracion_horas" ForeColor="Red" Font-Bold="true" />
-
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server"
+                                                ErrorMessage="*" ControlToValidate="duracion_horas"
+                                                ForeColor="Red" Font-Bold="true" />
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="duracion_horas" runat="server" TextMode="Number" Width="40px" min="1" max="24" CssClass="textotabla" />
+                                            <asp:TextBox ID="duracion_horas" runat="server"
+                                                TextMode="Number" Width="40px"
+                                                min="1" max="24" CssClass="texto" />
                                         </td>
                                     </tr>
                                 </table>
@@ -233,16 +265,15 @@
                                         <td class="auto-style3">Numero de
                                             <br />
                                             Participantes
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="*"
-                                            ControlToValidate="numParticipantes" ForeColor="Red" Font-Bold="true" />
-
-                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server"
-                                                ErrorMessage="*" ControlToValidate="numParticipantes"
-                                                ValidationExpression="^[1-9]+\d*$" ForeColor="Red" Font-Bold="true" />
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" 
+                                            ErrorMessage="*" ControlToValidate="numParticipantes" 
+                                            ForeColor="Red" Font-Bold="true" />
 
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="numParticipantes" runat="server" TextMode="Number" CssClass="textotabla" min="1" max="300" Width="40px" />
+                                            <asp:TextBox ID="numParticipantes" runat="server"
+                                                TextMode="Number" CssClass="texto"
+                                                min="1" Width="40px" />
                                         </td>
                                     </tr>
                                 </table>
@@ -251,12 +282,12 @@
                                 <table>
                                     <tr>
                                         <td class="auto-style3">Especifiar Lugar
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage="*"
-                                            ControlToValidate="textEspecificar" ForeColor="Red" Font-Bold="true" />
-
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server"
+                                            ErrorMessage="*" ControlToValidate="textEspecificar"
+                                            ForeColor="Red" Font-Bold="true" />
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="textEspecificar" runat="server" CssClass="textotabla" />
+                                            <asp:TextBox ID="textEspecificar" runat="server" CssClass="texto" />
                                         </td>
                                     </tr>
                                 </table>
@@ -266,16 +297,23 @@
                         <br />
                     </ContentTemplate>
                 </asp:UpdatePanel>
+                <asp:Button runat="server" ID="EnviarSolicitud"
+                    OnClick="enviarSolicitud_Click" Style="margin-left: 300px"
+                    Text="Enviar Solicitud" CssClass="botonformulario" />
             </div>
-            <center>
-                <asp:Button runat="server" ID="EnviarSolicitud" OnClick="enviarSolicitud_Click" Text="Enviar Solicitud" CssClass="botonformulario" />
-
-            </center>
-
         </form>
     </div>
     <div id="pie">
         <img src="imagenes/inferior.png" width="1024" height="100" />
     </div>
+    <script type="text/javascript">
+        function DisableButton() {
+            var boton = document.getElementById("<%=EnviarSolicitud.ClientID %>")
+            boton.text
+            boton.disabled = true;
+
+        }
+        window.onbeforeunload = DisableButton;
+    </script>
 </body>
 </html>

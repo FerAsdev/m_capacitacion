@@ -61,6 +61,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="m_seguimiento_solicitud.aspx" />
+    <Content Include="plantilla\plantillaCorreo.html" />
     <Content Include="CSS\estilo_calendario.css" />
     <Content Include="CSS\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="CSS\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -90,6 +92,7 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.11.3.min.js" />
     <Content Include="Scripts\jquery-ui-timepicker-addon.js" />
+    <Content Include="Scripts\prevent.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -129,6 +132,13 @@
     </Compile>
     <Compile Include="m_requisicion_interna.aspx.designer.cs">
       <DependentUpon>m_requisicion_interna.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="m_seguimiento_solicitud.aspx.cs">
+      <DependentUpon>m_seguimiento_solicitud.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="m_seguimiento_solicitud.aspx.designer.cs">
+      <DependentUpon>m_seguimiento_solicitud.aspx</DependentUpon>
     </Compile>
     <Compile Include="m_tipo_requisicion.aspx.cs">
       <DependentUpon>m_tipo_requisicion.aspx</DependentUpon>
