@@ -24,7 +24,7 @@ namespace m_requisicion_formacion
         protected void EnviarCorreo()
         {
             Consultas consulta = new Consultas();
-            string folio = consulta.ConsultaFolio(3);
+            string folio = consulta.ConsultaFolio();
             //Usuario es obtenido de la cookie (Estatico por ahora).
             string usuario = "Fernando";
             string tipo = "Auditoria";

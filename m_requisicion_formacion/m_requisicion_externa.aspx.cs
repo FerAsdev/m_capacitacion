@@ -48,7 +48,7 @@ namespace m_requisicion_formacion
         protected void EnviarCorreo()
         {
             Consultas consulta = new Consultas();
-            string folio = consulta.ConsultaFolio(2);
+            string folio = consulta.ConsultaFolio();
             string usuario = "Fernando";
             string tipo = "Externa";
 
@@ -116,7 +116,7 @@ namespace m_requisicion_formacion
                 cmd.Parameters.AddWithValue("@fecha_final", fechaFinal.Text.Trim());
                 if (horascheck.Checked)
                 {
-                    cmd.Parameters.AddWithValue("@hora_inicio", "");
+                    cmd.Parameters.AddWithValue("@hora_inicio", System.Data.SqlTypes.SqlDateTime.Null);
                 }
                 else
                 {
@@ -148,7 +148,7 @@ namespace m_requisicion_formacion
             try
             {
                 InsertarDatos();
-                EnviarCorreo();
+               // EnviarCorreo();
                 ClientScript.RegisterStartupScript(this.GetType(), "showMsj", "alerta()", true); 
             }
             catch (Exception ex)

@@ -63,16 +63,17 @@ namespace m_requisicion_formacion
 
         //Metodo que recibe el tipo de capacitacion y devueleve el
         //ultimo folio, para ser enviado por correo en la notificacion.
-        public string ConsultaFolio(int tipo) {
+        //-20 de octubre, ahora solo devuelve el folio de datos generales.
+        public string ConsultaFolio() {
             string folio;
-            string query ="";
-            string query1 = "SELECT IDENT_CURRENT ('capacitacion_interna')";
-            string query2 = "SELECT IDENT_CURRENT ('capacitacion_externa')";
-            string query3 = "SELECT IDENT_CURRENT ('capacitacion_auditoria')";
+
+            string query = "SELECT IDENT_CURRENT ('datos_generales')";
+            /* string query2 = "SELECT IDENT_CURRENT ('capacitacion_externa')";
+             string query3 = "SELECT IDENT_CURRENT ('capacitacion_auditoria')"; 
 
             if (tipo == 1) { query = query1; }
             if (tipo == 2) { query = query2; }
-            if (tipo == 3) { query = query3; }
+            if (tipo == 3) { query = query3; }   */
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConexionBD"].ToString());
 
             conn.Open();

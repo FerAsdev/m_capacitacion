@@ -108,7 +108,7 @@ namespace m_requisicion_formacion
         protected void EnviarCorreo()
         {
             Consultas consulta = new Consultas();
-            string folio = consulta.ConsultaFolio(1);
+            string folio = consulta.ConsultaFolio();
             string usuario = "Fernando";
             string tipo = "Interna";
 
@@ -311,7 +311,7 @@ namespace m_requisicion_formacion
             {
                 InsertarDatos();
                 GuardarAdjunto();
-               // EnviarCorreo();
+                EnviarCorreo();
                 ClientScript.RegisterStartupScript(this.GetType(), "showMsj", "alerta()", true);
 
             }
