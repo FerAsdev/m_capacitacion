@@ -172,7 +172,7 @@ namespace m_requisicion_formacion
             try
             {
                 InsertarDatos();
-                EnviarCorreo();
+                //EnviarCorreo();
                 ClientScript.RegisterStartupScript(this.GetType(), "showMsj", "alerta()", true);
 
             }

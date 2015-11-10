@@ -25,7 +25,7 @@
     </div>
     <div id="contenedor">
         <form id="form1" runat="server">
-            <asp:ScriptManager ID="ScriptManager1" runat="server" />
+            <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
             <div id="menu" style="width: 250px; height: 370px;"></div>
             <div id="modulo">
                 <h1>Solicitud de capacitación</h1>

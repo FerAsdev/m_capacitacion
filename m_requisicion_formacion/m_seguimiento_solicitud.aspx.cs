@@ -7,6 +7,8 @@ using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
+using System.Drawing;
+using System.IO;
 
 namespace m_requisicion_formacion
 {
@@ -107,7 +109,7 @@ namespace m_requisicion_formacion
                             dbo.datos_generales.hora_inicio,
                             dbo.datos_generales.solicitante  
                             FROM
-                            dbo.datos_generales";
+                            dbo.datos_generales ORDER BY id DESC";
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConexionBD"].ToString());
             conn.Open();
             SqlCommand cmd = new SqlCommand(query, conn);
@@ -174,13 +176,63 @@ namespace m_requisicion_formacion
             }
         }
 
-        protected void MostrarColumnasCapInterna(object sender, EventArgs e)
+        //Metodo para exportar el gridView a excel.
+        protected void ExportarToExcel(object sender, ImageClickEventArgs e)
         {
-            if (CheckBox1.Checked)
+            Response.Clear();
+            Response.Buffer = true;
+            Response.AddHeader("content-disposition", "attachment;filename=GridViewExport.xls");
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.ms-excel";
+            using (StringWriter sw = new StringWriter())
             {
-                GridView2.Columns[1].Visible = true;
+                HtmlTextWriter hw = new HtmlTextWriter(sw);
+
+                //To Export all pages
+                GridView1.AllowPaging = false;
+                this.BindGrid();
+
+                GridView1.HeaderRow.BackColor = Color.White;
+                foreach (TableCell cell in GridView1.HeaderRow.Cells)
+                {
+                    cell.BackColor = GridView1.HeaderStyle.BackColor;
+                }
+                foreach (GridViewRow row in GridView1.Rows)
+                {
+                    row.BackColor = Color.White;
+                    foreach (TableCell cell in row.Cells)
+                    {
+                        if (row.RowIndex % 2 == 0)
+                        {
+                            cell.BackColor = GridView1.AlternatingRowStyle.BackColor;
+                        }
+                        else
+                        {
+                            cell.BackColor = GridView1.RowStyle.BackColor;
+                        }
+                        cell.CssClass = "textmode";
+                    }
+                }
+
+                GridView1.RenderControl(hw);
+
+                //style to format numbers to string
+                string style = @"<style> .textmode { } </style>";
+                Response.Write(style);
+                Response.Output.Write(sw.ToString());
+                Response.Flush();
+                Response.End();
             }
         }
+        
+        public override void VerifyRenderingInServerForm(Control control)
+        {
+            /* Verifies that the control is rendered */
+        }
+
+
+
+
 
        
     }

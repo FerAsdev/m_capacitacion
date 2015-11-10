@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="m_requisicion_interna.aspx.cs" Inherits="m_requisicion_formacion.m_requisicion_interna" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="m_requisicion_interna.aspx.cs" Inherits="m_requisicion_formacion.m_requisicion_interna" Culture="es-MX" UICulture="es-MX"  %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
@@ -55,8 +55,7 @@
             <div id="modulo">
                 <h1>Solicitud de capacitación</h1>
                 <h3>Requisición de capacitación Interna</h3>
-                <ajaxToolkit:ToolkitScriptManager runat="Server" EnableScriptGlobalization="true"
-                    EnableScriptLocalization="true" ID="ToolkitScriptManager1" CombineScripts="false" />
+                <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True"></asp:ScriptManager>
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                     <ContentTemplate>
                         <fieldset>
@@ -113,8 +112,9 @@
                                         <td>
                                             <asp:TextBox runat="server" ID="fecha" ReadOnly="false" CssClass="texto" Width="100px" />
 
-                                            <ajaxToolkit:CalendarExtender ID="fecha_CalendarExtender" runat="server" Enabled="True" TargetControlID="fecha" CssClass="calendario" />
-                                        </td>
+                                            <ajaxToolkit:CalendarExtender ID="fecha_CalendarExtender" runat="server" BehaviorID="fecha_CalendarExtender" TargetControlID="fecha" />
+
+                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="auto-style3">Hora inicio

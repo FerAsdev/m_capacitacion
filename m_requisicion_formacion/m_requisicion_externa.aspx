@@ -1,6 +1,6 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="m_requisicion_externa.aspx.cs" Inherits="m_requisicion_formacion.m_requisicion_externa" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="m_requisicion_externa.aspx.cs" Inherits="m_requisicion_formacion.m_requisicion_externa" Culture="es-MX" UICulture="es-MX"%>
 
-<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
+<%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="ajaxToolkit" %>
 
 <!DOCTYPE html>
 
@@ -41,8 +41,7 @@
             <div id="modulo">
                 <h1>Solicitud de capacitación</h1>
                 <h3>Requisición de capacitación Externa.</h3>
-                <ajaxToolkit:ToolkitScriptManager runat="Server" EnableScriptGlobalization="true"
-                    EnableScriptLocalization="true" ID="ToolkitScriptManager1" CombineScripts="false" />
+                <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True"></asp:ScriptManager>
 
                 <!-- Datos Generales -->
                 <fieldset>
@@ -110,8 +109,7 @@
                                 <td>
                                     <asp:TextBox runat="server" ID="fecha" ReadOnly="false"
                                         CssClass="texto" Width="100px" />
-                                    <ajaxToolkit:CalendarExtender ID="fecha_CalendarExtender" runat="server"
-                                        TargetControlID="fecha" CssClass="calendario">
+                                    <ajaxToolkit:CalendarExtender ID="fecha_CalendarExtender" runat="server" BehaviorID="fecha_CalendarExtender" TargetControlID="fecha" CssClass="calendario" Format="dd/MM/yyyy">
                                     </ajaxToolkit:CalendarExtender>
                                     <br />
                                     <br />
@@ -129,11 +127,10 @@
                                 <td>
                                     <asp:TextBox runat="server" ID="fechaFinal" ReadOnly="false"
                                         CssClass="texto" Width="100px" />
-                                    <br />
-                                    <br />
-                                    <ajaxToolkit:CalendarExtender ID="CalendarExtender1" runat="server"
-                                        TargetControlID="fechaFinal" CssClass="calendario">
+                                    <ajaxToolkit:CalendarExtender ID="fechaFinal_CalendarExtender" runat="server" BehaviorID="fechaFinal_CalendarExtender" TargetControlID="fechaFinal" CssClass="calendario" Format="dd/MM/yyyy" >
                                     </ajaxToolkit:CalendarExtender>
+                                    <br />
+                                    <br />
                                     <br />
                                 </td>
                             </tr>

@@ -79,6 +79,7 @@ namespace m_requisicion_formacion
             conn.Open();
             SqlCommand cmd = new SqlCommand(query, conn);
             cmd.Connection = conn;
+            //Convertimos el valor obtenido a un String.
             folio = Convert.ToString(cmd.ExecuteScalar());
             conn.Close();
 

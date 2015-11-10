@@ -311,7 +311,7 @@ namespace m_requisicion_formacion
             {
                 InsertarDatos();
                 GuardarAdjunto();
-                EnviarCorreo();
+                //EnviarCorreo();
                 ClientScript.RegisterStartupScript(this.GetType(), "showMsj", "alerta()", true);
 
             }
